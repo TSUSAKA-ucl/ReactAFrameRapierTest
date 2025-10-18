@@ -1,9 +1,9 @@
 // ********
 // ********
 import AFRAME from 'aframe';
-import './vrControllerThumbMenu.js'; // with thumbMenuEventHandler
+import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js'; // with thumbMenuEventHandler
 import './rapierSelector.js';
-import './axesFrame.js';
+import '@ucl-nuee/robot-loader/axesFrame.js';
 
 
 export default VrControllerComponents;
@@ -21,6 +21,7 @@ function VrControllerComponents() {
                 thumbmenu-event-handler
                 target-selector
                 rapier-selector
+                event-distributor
                 visible="true">
         <a-entity a-axes-frame />
       </a-entity>

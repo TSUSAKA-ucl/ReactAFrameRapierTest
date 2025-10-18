@@ -20,6 +20,9 @@ importers:
       '@ucl-nuee/rapier-worker':
         specifier: https://github.com/TSUSAKA-ucl/AFrameRapierWorker/releases/download/ver.0.1.0/ucl-nuee-rapier-worker-0.1.1.tgz
         version: https://github.com/TSUSAKA-ucl/AFrameRapierWorker/releases/download/ver.0.1.0/ucl-nuee-rapier-worker-0.1.1.tgz(aframe@1.7.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      '@ucl-nuee/robot-loader':
+        specifier: file:../robot-loader
+        version: file:../robot-loader(@msgpack/msgpack@3.1.2)(eslint@9.36.0)(typescript@5.9.3)
       aframe:
         specifier: ^1.7.1
         version: 1.7.1
@@ -60,9 +63,6 @@ importers:
       globals:
         specifier: ^16.3.0
         version: 16.4.0
-      madge:
-        specifier: file:../../madge
-        version: file:../../madge(typescript@5.9.3)
       vite:
         specifier: ^7.1.2
         version: 7.1.7(@types/node@24.6.0)
@@ -624,6 +624,9 @@ packages:
       aframe: '>=1.4.0'
       react: '>=18'
       react-dom: '>=18'
+
+  '@ucl-nuee/robot-loader@file:../robot-loader':
+    resolution: {directory: ../robot-loader, type: directory}
 
   '@vitejs/plugin-react@5.0.4':
     resolution: {integrity: sha512-La0KD0vGkVkSk6K+piWDKRUyg8Rl5iAIKRMH0vMJI0Eg47bq1eOxmoObAaQG37WMW9MSyk7Cs8EIWwJC1PtzKA==}
@@ -1602,8 +1605,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  madge@file:../../madge:
-    resolution: {directory: ../../madge, type: directory}
+  madge@8.0.0:
+    resolution: {integrity: sha512-9sSsi3TBPhmkTCIpVQF0SPiChj1L7Rq9kU2KDG1o6v2XH9cCw086MopjVCD+vuoL5v8S77DTbVopTO8OUiQpIw==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -2807,6 +2810,22 @@ snapshots:
       aframe: 1.7.1
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
+
+  '@ucl-nuee/robot-loader@file:../robot-loader(@msgpack/msgpack@3.1.2)(eslint@9.36.0)(typescript@5.9.3)':
+    dependencies:
+      '@ucl-nuee/ik-cd-worker': https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz(@msgpack/msgpack@3.1.2)(aframe@1.7.1)
+      '@ucl-nuee/jaka-zu5': https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz
+      '@ucl-nuee/nova2': https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-nova2-1.0.0.tgz
+      aframe: 1.7.1
+      eslint-plugin-react: 7.37.5(eslint@9.36.0)
+      madge: 8.0.0(typescript@5.9.3)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+    transitivePeerDependencies:
+      - '@msgpack/msgpack'
+      - eslint
+      - supports-color
+      - typescript
 
   '@vitejs/plugin-react@5.0.4(vite@7.1.7(@types/node@24.6.0))':
     dependencies:
@@ -4019,7 +4038,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  madge@file:../../madge(typescript@5.9.3):
+  madge@8.0.0(typescript@5.9.3):
     dependencies:
       chalk: 4.1.2
       commander: 7.2.0

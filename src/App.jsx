@@ -1,15 +1,15 @@
 // import React, { useEffect, useRef, useState } from 'react'
 import './App.css';
 import 'aframe';
-import './robotRegistry.js';
+import '@ucl-nuee/robot-loader/robotRegistry.js';
 import VrControllerComponents from './VrControllerComponents.jsx';
 import ButtonUI from './ButtonUI.jsx';
 import './rapierBoxController.js';
 import './rapierHand1MotionUI.js';
-import './robotLoader.js';
-import './ikWorker.js';
-import './reflectWorkerJoints.js';
-import './armMotionUI.js';
+import '@ucl-nuee/robot-loader/robotLoader.js';
+import '@ucl-nuee/robot-loader/ikWorker.js';
+import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
+import '@ucl-nuee/robot-loader/armMotionUI.js';
 
 // ****************
 // the entry point
@@ -22,8 +22,7 @@ function App() {
   return (
     <a-scene xr-mode-ui="XRMode: ar">
       <a-entity id="robot-registry"
-                robot-registry
-                event-distributor>
+                robot-registry >
         <VrControllerComponents />
       </a-entity>
       <a-entity camera position="-0.5 1.2 1.7"
