@@ -23,7 +23,17 @@ function VrControllerComponents() {
                 rapier-selector
                 event-distributor
                 visible="true">
-        <a-entity a-axes-frame />
+        <a-entity a-axes-frame="length: 0.1" />
+      </a-entity>
+      <a-entity left-controller
+                laser-controls="hand: left"
+                thumbstick-menu={`items: ${menuItems}`}
+                thumbmenu-event-handler
+                target-selector
+                rapier-selector
+                event-distributor
+                visible="true">
+        <a-entity a-axes-frame="length: 0.1" />
       </a-entity>
       <a-entity cursor="rayOrigin: mouse"
                 mouse-cursor

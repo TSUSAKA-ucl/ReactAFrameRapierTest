@@ -6,6 +6,7 @@ import VrControllerComponents from './VrControllerComponents.jsx';
 import ButtonUI from './ButtonUI.jsx';
 import './rapierBoxController.js';
 import './rapierHand1MotionUI.js';
+import './rapierRigidbodyAttach.js';
 import '@ucl-nuee/robot-loader/robotLoader.js';
 import '@ucl-nuee/robot-loader/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
@@ -48,6 +49,7 @@ function App() {
                ik-worker={`${deg22}, ${deg30}, ${-deg45}, 0, ${-deg90}, 0`}
                reflect-worker-joints
                arm-motion-ui
+               rapier-rigidbody-attach="rigidBody: jakaHand; position: 0 0 0.0; quaternion: 0 0 0 1"
       />
       <a-plane id="nova2-plane"
 	       position="-1.0 0.0 -1.0" rotation="-90 0 90"
