@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "depgraph": "npx depcruise src/main.jsx --exclude '^node_modules/\\.pnpm' --output-type dot | dot -Tsvg > graph.svg"
   },
   "dependencies": {
     "@ucl-nuee/robot-loader": "file:../robot-loader",
