@@ -24,6 +24,31 @@ const rigidBodyArray = [
 		color: '#7BC8A4',
 	      },
   },
+  { name: 'jakaHand',
+    type: 'kinematicPosition',
+    position: {x: (0.0)*mag, y: (2.5)*mag, z: (-1.0)*mag},
+    orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
+    collider: { shape: 'box',
+		size: {x: (0.01), y: (0.02), z: (0.015)},
+		color: 'SlateGray',
+	      },
+  },
+  { name: 'jakaHandL',
+    position: {x: (0.0)*mag, y: (2.5)*mag+0.02, z: (-1.0)*mag+0.04},
+    orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
+    collider: { shape: 'box',
+		size: {x: (0.01), y: (0.005), z: (0.025)},
+		color: 'SlateGray',
+	      },
+  },
+  { name: 'jakaHandR',
+    position: {x: (0.0)*mag, y: (2.5)*mag-0.02, z: (-1.0)*mag+0.04},
+    orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
+    collider: { shape: 'box',
+		size: {x: (0.01), y: (0.005), z: (0.025)},
+		color: 'SlateGray',
+	      },
+  },
   { name: 'box1',
     type: 'kinematicPosition',
     position: {x: (2.0)*mag, y: (2.5)*mag, z: (-3.0)*mag},
@@ -143,11 +168,40 @@ const apEndJnt1A = {x: (0.0)*mag, y: (-0.6+0.28)*mag, z: (0.2)*mag};
 const apEndJnt2A = {...apEndJnt1A}; apEndJnt2A.y = -apEndJnt1A.y;
 const apEndJnt1B = {x: (0.0)*mag, y: (0.0)*mag, z: (-0.6)*mag};
 const apEndJnt2B = {...apEndJnt1B}; apEndJnt2B.y = -apEndJnt1B.y;
+//
+const jakaHandJntL = {x: (0.0), y: (0.005), z: (0.05+0.03)/2};;
+const jakaHandJntR = {...jakaHandJntL}; jakaHandJntR.y = -jakaHandJntL.y;
+//
 const endJStiffness = 2.0*800.0;
 const endJDamping = 1000.0;
 const handJDamping = 3000.0;
 //
 const jointArray = [
+  {
+    name: 'jakaHandJL',  type: 'prismatic',
+    bodyA: 'jakaHand',  anchorA: jakaHandJntL,
+    bodyB: 'jakaHandL',  anchorB: o,
+    axis: y,
+    limits: [0.00, 0.02],
+    motor: {
+      type: 'velocity',
+      targetVel: 0, damping: handJDamping
+    },
+  },
+  {
+    name: 'jakaHandJR',  type: 'prismatic',
+    bodyA: 'jakaHand',  anchorA: jakaHandJntR,
+    bodyB: 'jakaHandR',  anchorB: o,
+    axis: y,
+    limits: [-0.02, 0.00],
+    motor: {
+      type: 'velocity',
+      targetVel: 0, damping: handJDamping
+    },
+  },
+
+
+
   {
     name: 'boxJoint1',  type: 'revolute',
     bodyA: 'box1',  anchorA: apBoxBJnt1A,
@@ -241,18 +295,18 @@ const functionArray = [
   },
   { name: 'handJointClose',
     method: () => {
-      getJoint('handJoint1')
-        .configureMotorVelocity(-0.4*mag, handJDamping);
-      getJoint('handJoint2')
-        .configureMotorVelocity(0.4*mag, handJDamping);
+      getJoint('jakaHandJL')
+        .configureMotorVelocity(-0.04, handJDamping);
+      getJoint('jakaHandJR')
+        .configureMotorVelocity(0.04, handJDamping);
     },
   },
   { name: 'handJointOpen',
     method: () => {
-      getJoint('handJoint1')
-        .configureMotorVelocity(0.2*mag, handJDamping);
-      getJoint('handJoint2')
-        .configureMotorVelocity(-0.2*mag, handJDamping);
+      getJoint('jakaHandJL')
+        .configureMotorVelocity(0.02, handJDamping);
+      getJoint('jakaHandJR')
+        .configureMotorVelocity(-0.02, handJDamping);
     },
   },
 ];
