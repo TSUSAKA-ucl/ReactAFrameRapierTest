@@ -1,9 +1,9 @@
 // ********
 // ********
 import AFRAME from 'aframe';
-import './vrControllerThumbMenu.js'; // with thumbMenuEventHandler
+import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js'; // with thumbMenuEventHandler
+import '@ucl-nuee/robot-loader/axesFrame.js';
 import './rapierSelector.js';
-import './axesFrame.js';
 
 
 export default VrControllerComponents;
