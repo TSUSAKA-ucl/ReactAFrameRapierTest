@@ -19,6 +19,7 @@ const mag=0.25;
 const rigidBodyArray = [
   { name: 'floor',
     type: 'kinematicPosition',
+    position: {x: 0, y: -0.1, z: 0},
     collider: { shape: 'box',
 		size: {x: 10.5, y:0.1, z:10.5},
 		color: '#7BC8A4',
@@ -192,8 +193,8 @@ const jointArray = [
     name: 'jakaHandJR',  type: 'prismatic',
     bodyA: 'jakaHand',  anchorA: jakaHandJntR,
     bodyB: 'jakaHandR',  anchorB: o,
-    axis: y,
-    limits: [-0.02, 0.00],
+    axis: yInv,
+    limits: [-0.02, 0.02],
     motor: {
       type: 'velocity',
       targetVel: 0, damping: handJDamping
@@ -296,9 +297,9 @@ const functionArray = [
   { name: 'handJointClose',
     method: () => {
       getJoint('jakaHandJL')
-        .configureMotorVelocity(-0.04, handJDamping);
+        .configureMotorVelocity(-0.06, handJDamping);
       getJoint('jakaHandJR')
-        .configureMotorVelocity(0.04, handJDamping);
+        .configureMotorVelocity(-0.06, handJDamping);
     },
   },
   { name: 'handJointOpen',
@@ -306,7 +307,14 @@ const functionArray = [
       getJoint('jakaHandJL')
         .configureMotorVelocity(0.02, handJDamping);
       getJoint('jakaHandJR')
-        .configureMotorVelocity(-0.02, handJDamping);
+        .configureMotorVelocity(0.02, handJDamping);
+    },
+  },
+  { name: 'mapVeloc',
+    method: (time,arg) => {
+      Object.entries(arg).forEach(([key, value]) => {
+	getJoint(key).configureMotorVelocity(value, handJDamping);
+      });
     },
   },
 ];

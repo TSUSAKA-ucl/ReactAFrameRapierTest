@@ -2,51 +2,41 @@ import AFRAME from 'aframe'
 // const THREE = window.AFRAME.THREE;
 import {globalWorkerRef} from '@ucl-nuee/rapier-worker'
 
-AFRAME.registerComponent('rapier-box-controller', {
+AFRAME.registerComponent('rapier-func-controller', {
   schema: {
-    robotId: {type: 'string', default: 'rapier-controller'},
+    prefix: {type: 'string', default: ''}, // prepend this to callee func name. e.g. 'jakaHand'
+    arg: {type: 'array' }, // argに与えるObjectのkeyの一覧
+    value: {type: 'array' }, // argに与えるObjectのvalueの一覧。数値に変換される
+    // rapierObjectUtils.jsに機能追加して全joint名等のarrayを取り出せるようにする。
+    // joint名からprefixにマッチするjointを取り出す
   },
   init: function() {
-    const sceneEl = this.el.sceneEl;
-    const onSceneLoaded = () => {
-      const robotRegistry = this.el.sceneEl.robotRegistryComp;
-      // const robotRegistry = document.getElementById('robot-registry');
-      if (robotRegistry) {
-	robotRegistry.add(this.data.robotId, {el: this.el, axes: []});
-	this.registered = true;
-      } else {
-	console.warn('robotRegistry component not found!');
-	this.registered = false;
-      }
-    }
-    if (sceneEl.hasLoaded) {
-      onSceneLoaded();
-    } else {
-      sceneEl.addEventListener('loaded', onSceneLoaded);
-    }
-
     this.el.addEventListener('thumbmenu-select', (evt) => {
-      console.log('### menu select event: ', evt.detail.index);
-      switch (evt.detail.index) {
-      case 7:
+      const menuText = evt.detail?.texts[evt.detail?.index];
+      console.log('### menu select event:', evt.detail.index,
+		  'text:', menuText);
+      switch (menuText) {
+      case 'open':
         globalWorkerRef?.current?.postMessage({
           type: 'call',
-          name: 'handJointOpen',
+          name: 'mapVeloc',
+	  arg: {jakaHandJL: 0.02, jakaHandJR: 0.02}
         })
         break;
-      case 5:
+      case 'close':
         globalWorkerRef?.current?.postMessage({
           type: 'call',
-          name: 'handJointClose',
+          name: 'mapVeloc',
+	  arg: {jakaHandJL: -0.06, jakaHandJR: -0.06}
         });
         break;
-      case 1:
+      case 'act':
         globalWorkerRef?.current?.postMessage({
           type: 'activate',
           name: 'box1Translation',
         });
         break;
-      case 3:
+      case 'deact':
         globalWorkerRef?.current?.postMessage({
           type: 'deactivate',
           name: 'box1Translation',

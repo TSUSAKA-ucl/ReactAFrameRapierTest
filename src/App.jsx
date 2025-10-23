@@ -4,9 +4,9 @@ import 'aframe';
 import '@ucl-nuee/robot-loader/robotRegistry.js';
 import VrControllerComponents from './VrControllerComponents.jsx';
 import ButtonUI from './ButtonUI.jsx';
-import './rapierBoxController.js';
 import './rapierHand1MotionUI.js';
 import './rapierRigidbodyAttach.js';
+import './rapierFuncController.js';
 import '@ucl-nuee/robot-loader/robotLoader.js';
 import '@ucl-nuee/robot-loader/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
@@ -30,15 +30,16 @@ function App() {
                 look-controls="enabled: false"></a-entity>
 
       <ButtonUI />
-      <a-cylinder position="1.25 0.2 -0.75"
-                  radius="0.12" height="0.4" color="#FFC65D"
-                  material="opacity: 0.35; transparent: true">
-      </a-cylinder>
+      {/* <a-cylinder position="1.25 0.2 -0.75" */}
+      {/*             radius="0.12" height="0.4" color="#FFC65D" */}
+      {/*             material="opacity: 0.35; transparent: true"> */}
+      {/* </a-cylinder> */}
 
       <a-entity
         id="rapier-controller"
-        rapier-box-controller="robotId: rapier-controller"
+        rapier-register
         rapier-hand1-motion-ui
+        rapier-func-controller
       />
 
       <a-plane id="jaka-plane"
@@ -50,6 +51,7 @@ function App() {
                reflect-worker-joints
                arm-motion-ui
                rapier-rigidbody-attach="rigidBody: jakaHand; position: 0 0 0.0; quaternion: 0 0 0 1"
+               rapier-box-controller="robotId: rapier-controller"
       />
       <a-plane id="nova2-plane"
 	       position="-1.0 0.0 -1.0" rotation="-90 0 90"
