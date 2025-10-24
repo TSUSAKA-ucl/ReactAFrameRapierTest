@@ -39,7 +39,6 @@ function App() {
         id="rapier-controller"
         rapier-register
         rapier-hand1-motion-ui
-        rapier-func-controller
       />
 
       <a-plane id="jaka-plane"
@@ -51,7 +50,7 @@ function App() {
                reflect-worker-joints
                arm-motion-ui
                rapier-rigidbody-attach="rigidBody: jakaHand; position: 0 0 0.0; quaternion: 0 0 0 1"
-               rapier-box-controller="robotId: rapier-controller"
+               rapier-func-controller
       />
       <a-plane id="nova2-plane"
 	       position="-1.0 0.0 -1.0" rotation="-90 0 90"
@@ -61,6 +60,8 @@ function App() {
                ik-worker={`${deg90}, ${-deg90}, ${deg90}, 0, ${-deg90}, 0`}
                reflect-worker-joints
                arm-motion-ui
+               rapier-rigidbody-attach="rigidBody: nova2Sucker; position: 0 0 0.21; quaternion: 0.707107 0 0 0.707107"
+               rapier-box-controller="robotId: rapier-controller"
       />
       {/* <a-sky color="#ECECEC"></a-sky> */}
     </a-scene>

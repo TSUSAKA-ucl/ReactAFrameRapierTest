@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@ucl-nuee/robot-loader": "file:../robot-loader",
-    "@ucl-nuee/ik-cd-worker": "https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz",
-    "@ucl-nuee/rapier-worker": "https://github.com/TSUSAKA-ucl/AFrameRapierWorker/releases/download/ver.0.1.0/ucl-nuee-rapier-worker-0.1.1.tgz",
+    "@ucl-nuee/ik-cd-worker": "file:../../ik_cd_worker/",
+    "@ucl-nuee/rapier-worker": "file:../rapierWorker/",
     "aframe": "^1.7.1",
     "eslint-plugin-react": "^7.37.5",
     "react": "^19.1.1",

@@ -27,8 +27,8 @@ AFRAME.registerComponent('rapier-rigidbody-attach', {
       if (globalObjectsRef?.current[this.data.rigidBody]) {
 	const worldPosition = new THREE.Vector3();
 	const worldQuaternion = new THREE.Quaternion();
-	console.log('<><><> typeof this.el?.endLink:', typeof this.el?.endLink,
-		    'this.el.id:', this.el?.id);
+	// console.log('<><><> typeof this.el?.endLink:', typeof this.el?.endLink,
+	// 	    'this.el.id:', this.el?.id);
 	if (this.el?.endLink) {
 	  this.el.endLink.object3D.getWorldPosition(worldPosition);
 	  this.el.endLink.object3D.getWorldQuaternion(worldQuaternion);

@@ -16,6 +16,7 @@ const end1props = {
 };
 //
 const mag=0.25;
+const sq=0.707107;
 const rigidBodyArray = [
   { name: 'floor',
     type: 'kinematicPosition',
@@ -23,6 +24,15 @@ const rigidBodyArray = [
     collider: { shape: 'box',
 		size: {x: 10.5, y:0.1, z:10.5},
 		color: '#7BC8A4',
+	      },
+  },
+  { name: 'nova2Sucker',
+    type: 'kinematicPosition',
+    position: {x: (-10.0)*mag, y: (1.5)*mag, z: (-1.0)*mag},
+    orientation: {w:1, x:0, y:0.0, z:0.0},
+    collider: { shape: 'cylinder',
+		size: {radius: 0.01, halfHeight: 0.01},
+		color: 'Red', // 'SlateGray',
 	      },
   },
   { name: 'jakaHand',
