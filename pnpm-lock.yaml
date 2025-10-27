@@ -11,6 +11,12 @@ importers:
       '@ucl-nuee/ik-cd-worker':
         specifier: file:../../ik_cd_worker/
         version: file:../../ik_cd_worker(@msgpack/msgpack@3.1.2)(aframe@1.7.1)
+      '@ucl-nuee/jaka-zu5':
+        specifier: file:../robot-assets/jaka-zu5/
+        version: file:../robot-assets/jaka-zu5
+      '@ucl-nuee/nova2':
+        specifier: file:../robot-assets/nova2/
+        version: file:../robot-assets/nova2
       '@ucl-nuee/rapier-worker':
         specifier: file:../rapierWorker/
         version: file:../rapierWorker(aframe@1.7.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -608,9 +614,17 @@ packages:
       '@msgpack/msgpack': ^3.1.2
       aframe: ^1.6
 
+  '@ucl-nuee/jaka-zu5@file:../robot-assets/jaka-zu5':
+    resolution: {directory: ../robot-assets/jaka-zu5, type: directory}
+    hasBin: true
+
   '@ucl-nuee/jaka-zu5@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz':
     resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz}
     version: 1.0.0
+    hasBin: true
+
+  '@ucl-nuee/nova2@file:../robot-assets/nova2':
+    resolution: {directory: ../robot-assets/nova2, type: directory}
     hasBin: true
 
   '@ucl-nuee/nova2@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-nova2-1.0.0.tgz':
@@ -2806,7 +2820,11 @@ snapshots:
       '@msgpack/msgpack': 3.1.2
       aframe: 1.7.1
 
+  '@ucl-nuee/jaka-zu5@file:../robot-assets/jaka-zu5': {}
+
   '@ucl-nuee/jaka-zu5@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz': {}
+
+  '@ucl-nuee/nova2@file:../robot-assets/nova2': {}
 
   '@ucl-nuee/nova2@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-nova2-1.0.0.tgz': {}
 
