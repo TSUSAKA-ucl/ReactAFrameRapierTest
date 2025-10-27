@@ -53,6 +53,13 @@ function App() {
                rapier-rigidbody-attach="rigidBody: jakaHand; position: 0 0 0.0; quaternion: 0 0 0 1"
                rapier-func-controller
       />
+      <a-plane id="jaka-hand-a"
+               robot-loader="model: jaka_hand_A"
+               position="0 0.5 -2" rotation="-90 0 90"
+               width="0.2" height="0.2" color="blue"
+               material="opacity: 0.9; transparent: true; side: double;"
+               set-joints-directly-in-degree={45, 45}
+      />
       <a-plane id="nova2-plane"
                position="-1.0 0.0 -1.0" rotation="-90 0 90"
                width="2" height="2" color="beige"
