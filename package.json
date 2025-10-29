@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@ucl-nuee/robot-loader": "file:../robot-loader",
-    "@ucl-nuee/ik-cd-worker": "file:../../ik_cd_worker/",
+    "@ucl-nuee/ik-cd-worker": "file:../ik-cd-worker/",
     "@ucl-nuee/rapier-worker": "file:../rapierWorker/",
     "@ucl-nuee/jaka-zu5": "file:../robot-assets/jaka-zu5/",
     "@ucl-nuee/nova2": "file:../robot-assets/nova2/",

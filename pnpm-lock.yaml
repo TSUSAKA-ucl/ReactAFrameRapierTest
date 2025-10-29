@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@ucl-nuee/ik-cd-worker':
-        specifier: file:../../ik_cd_worker/
-        version: file:../../ik_cd_worker(@msgpack/msgpack@3.1.2)(aframe@1.7.1)
+        specifier: file:../ik-cd-worker/
+        version: file:../ik-cd-worker(@msgpack/msgpack@3.1.2)(aframe@1.7.1)
       '@ucl-nuee/jaka-zu5':
         specifier: file:../robot-assets/jaka-zu5/
-        version: file:../robot-assets/jaka-zu5
+        version: file:../robot-assets/jaka-zu5(@msgpack/msgpack@3.1.2)(aframe@1.7.1)(eslint@9.36.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)
       '@ucl-nuee/nova2':
         specifier: file:../robot-assets/nova2/
         version: file:../robot-assets/nova2
@@ -599,8 +599,8 @@ packages:
     resolution: {integrity: sha512-FrvMpAK+hTbFy7vH5j1+tMYHMSKLE6RzluFJlkFNKD0p9YsUT75JlBSmr5so3QRzvMwU5/bIEdeNrxm8du8l3Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@ucl-nuee/ik-cd-worker@file:../../ik_cd_worker':
-    resolution: {directory: ../../ik_cd_worker, type: directory}
+  '@ucl-nuee/ik-cd-worker@file:../ik-cd-worker':
+    resolution: {directory: ../ik-cd-worker, type: directory}
     hasBin: true
     peerDependencies:
       '@msgpack/msgpack': ^3.1.2
@@ -617,6 +617,10 @@ packages:
   '@ucl-nuee/jaka-zu5@file:../robot-assets/jaka-zu5':
     resolution: {directory: ../robot-assets/jaka-zu5, type: directory}
     hasBin: true
+    peerDependencies:
+      aframe: ^1.7.1
+      react: ^18.3.0
+      react-dom: ^18.3.0
 
   '@ucl-nuee/jaka-zu5@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz':
     resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz}
@@ -2810,7 +2814,7 @@ snapshots:
       '@typescript-eslint/types': 8.46.0
       eslint-visitor-keys: 4.2.1
 
-  '@ucl-nuee/ik-cd-worker@file:../../ik_cd_worker(@msgpack/msgpack@3.1.2)(aframe@1.7.1)':
+  '@ucl-nuee/ik-cd-worker@file:../ik-cd-worker(@msgpack/msgpack@3.1.2)(aframe@1.7.1)':
     dependencies:
       '@msgpack/msgpack': 3.1.2
       aframe: 1.7.1
@@ -2820,7 +2824,17 @@ snapshots:
       '@msgpack/msgpack': 3.1.2
       aframe: 1.7.1
 
-  '@ucl-nuee/jaka-zu5@file:../robot-assets/jaka-zu5': {}
+  '@ucl-nuee/jaka-zu5@file:../robot-assets/jaka-zu5(@msgpack/msgpack@3.1.2)(aframe@1.7.1)(eslint@9.36.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)':
+    dependencies:
+      '@ucl-nuee/robot-loader': file:../robot-loader(@msgpack/msgpack@3.1.2)(eslint@9.36.0)(typescript@5.9.3)
+      aframe: 1.7.1
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+    transitivePeerDependencies:
+      - '@msgpack/msgpack'
+      - eslint
+      - supports-color
+      - typescript
 
   '@ucl-nuee/jaka-zu5@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz': {}
 

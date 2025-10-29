@@ -13,12 +13,18 @@ AFRAME.registerComponent('rapier-func-controller', {
   init: function() {
     this.handIsOpen = true;
     this.box1active = true;
-    const handArgs = []
+    const handArgs = []; 
+    const handSpeed = [-0.06, 0.12]; // [close, open]
     if (this.el.id === 'jaka-plane') {
       handArgs[0] = 'jakaHandJL';
       handArgs[1] = 'jakaHandJR';
     } else if (this.el.id === 'nova2-plane') {
       // handArgs ['nova2HandJL', 'nova2HandJR'];
+    } else if (this.el.id === 'rapier-controller') {
+      handArgs[0] = 'handJoint1';
+      handArgs[1] = 'handJoint2';
+      handSpeed[0] = -0.5;
+      handSpeed[1] = 0.5;
     }
     this.el.addEventListener('thumbmenu-select', (evt) => {
       const menuText = evt.detail?.texts[evt.detail?.index];
@@ -28,10 +34,10 @@ AFRAME.registerComponent('rapier-func-controller', {
       case 'open': {
 	const args = {};
 	if (this.handIsOpen) {
-	  handArgs.forEach(v=>args[v]= -0.06);
+	  handArgs.forEach(v=>args[v]= handSpeed[0]);
 	  this.handIsOpen = false;
 	} else {
-	  handArgs.forEach(v=>args[v]=0.12);
+	  handArgs.forEach(v=>args[v]= handSpeed[1]);
 	  this.handIsOpen = true;
 	}
         globalWorkerRef?.current?.postMessage({

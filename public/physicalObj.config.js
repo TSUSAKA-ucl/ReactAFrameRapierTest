@@ -14,9 +14,23 @@ const end1props = {
   friction: 3.9,
   frictionCombineRule: 'Max',
 };
+const fingerProps = {
+  density: 3.0,
+  friction: 9.9,
+  frictionCombineRule: 'Max',
+};
 //
 const mag=0.25;
-const sq=0.707107;
+// const sq=0.707107;
+const redWidth = 0.6*mag;
+const redThickness = 0.2*mag;
+const redFingerLength = 0.6*mag;
+const redFingerWidth = 0.25*mag;
+const redFingerThickness = 0.05*mag;
+//
+const jakaPalmThickness=0.160/2;
+const jakaFingerLength=0.130/2;
+
 const rigidBodyArray = [
   { name: 'floor',
     type: 'kinematicPosition',
@@ -40,7 +54,7 @@ const rigidBodyArray = [
     position: {x: (0.0)*mag, y: (2.5)*mag, z: (-1.0)*mag},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
     collider: { shape: 'box',
-		size: {x: (0.01), y: (0.02), z: (0.015)},
+		size: {x: (0.02), y: (0.04), z: (jakaPalmThickness-0.01)},
 		color: 'SlateGray',
 	      },
   },
@@ -48,16 +62,18 @@ const rigidBodyArray = [
     position: {x: (0.0)*mag, y: (2.5)*mag+0.02, z: (-1.0)*mag+0.04},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
     collider: { shape: 'box',
-		size: {x: (0.01), y: (0.005), z: (0.025)},
-		color: 'SlateGray',
+		size: {x: (0.01), y: (0.005), z: (jakaFingerLength)},
+		props: fingerProps,
+		color: 'ForestGreen',
 	      },
   },
   { name: 'jakaHandR',
     position: {x: (0.0)*mag, y: (2.5)*mag-0.02, z: (-1.0)*mag+0.04},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
     collider: { shape: 'box',
-		size: {x: (0.01), y: (0.005), z: (0.025)},
-		color: 'SlateGray',
+		size: {x: (0.01), y: (0.005), z: (jakaFingerLength)},
+		props: fingerProps,
+		color: 'DarkBlue',
 	      },
   },
   { name: 'box1',
@@ -91,7 +107,9 @@ const rigidBodyArray = [
     position: {x: (1.0)*mag, y: (2.0)*mag, z: (-3.0)*mag},	
     orientation: {w: 0.991445, x:0.0, y:0.0, z:0.130526},
     collider: { shape: 'box',
-		size: {x: (0.4)*mag, y: (0.6)*mag, z: (0.2)*mag},
+		size: {x: redThickness*2,
+		       y: redWidth,
+		       z: redThickness},
 		color: 'Crimson', // dark red color
 	      },
   },
@@ -99,7 +117,9 @@ const rigidBodyArray = [
     position: {x: (1.0)*mag, y: (4.0)*mag, z: (-3.0)*mag},
     orientation: {w: 0.991445, x:0.0, y:0.0, z:-0.130526},
     collider: { shape: 'box',
-		size: {x: (0.25)*mag, y: (0.05)*mag, z: (0.6)*mag},
+		size: {x: redFingerWidth,
+		       y: redFingerThickness,
+		       z: redFingerLength},
 		props: hand23props,
 		color: '#FF6347',	// tomato color
 	      },
@@ -108,7 +128,9 @@ const rigidBodyArray = [
     position: {x: (1.0)*mag, y: (3.5)*mag, z: (-3.0)*mag},
     orientation: {w: 0.991445, x:0.0, y:0.0, z:-0.130526},
     collider: { shape: 'box',
-		size: {x: (0.25)*mag, y: (0.05)*mag, z: (0.6)*mag},
+		size: {x: redFingerWidth,
+		       y: redFingerThickness,
+		       z: redFingerLength},
 		props: hand23props,
 		density: 0.02,
 		color: 'LightCoral',
@@ -204,7 +226,8 @@ const apBoxBJnt1B = {x: (0.0)*mag, y: (0.05)*mag, z: (-0.6)*mag};
 const apBoxBJnt2A = {...apBoxBJnt1A}; apBoxBJnt2A.y = -apBoxBJnt2A.y;
 const apBoxBJnt2B = {...apBoxBJnt1B}; apBoxBJnt2B.y = -apBoxBJnt2B.y;
 //
-const apHandJnt1A = {x: (0.0)*mag, y: (-0.6)*mag, z: (0.6+0.201)*mag};;
+const apHandJnt1A = {x: 0, y: -redWidth,
+		     z: redFingerLength + redThickness + 0.05*mag};
 const apHandJnt2A = {...apHandJnt1A}; apHandJnt2A.y = -apHandJnt1A.y;
 //
 const apEndJnt1A = {x: (0.0)*mag, y: (-0.6+0.28)*mag, z: (0.2)*mag};
@@ -212,12 +235,12 @@ const apEndJnt2A = {...apEndJnt1A}; apEndJnt2A.y = -apEndJnt1A.y;
 const apEndJnt1B = {x: (0.0)*mag, y: (0.0)*mag, z: (-0.6)*mag};
 const apEndJnt2B = {...apEndJnt1B}; apEndJnt2B.y = -apEndJnt1B.y;
 //
-const jakaHandJntL = {x: (0.0), y: (0.005), z: (0.05+0.03)/2};;
+const jakaHandJntL = {x: (0.0), y: (0.005), z: (jakaPalmThickness+jakaFingerLength)};
 const jakaHandJntR = {...jakaHandJntL}; jakaHandJntR.y = -jakaHandJntL.y;
 //
 const endJStiffness = 2.0*800.0;
 const endJDamping = 1000.0;
-const handJDamping = 3000.0;
+const handJDamping = 300.0;
 //
 const jointArray = [
   {
@@ -225,7 +248,7 @@ const jointArray = [
     bodyA: 'jakaHand',  anchorA: jakaHandJntL,
     bodyB: 'jakaHandL',  anchorB: o,
     axis: y,
-    limits: [0.00, 0.02],
+    limits: [-0.00, 0.04],
     motor: {
       type: 'velocity',
       targetVel: 0, damping: handJDamping
@@ -236,14 +259,12 @@ const jointArray = [
     bodyA: 'jakaHand',  anchorA: jakaHandJntR,
     bodyB: 'jakaHandR',  anchorB: o,
     axis: yInv,
-    limits: [-0.02, 0.02],
+    limits: [-0.00, 0.04],
     motor: {
       type: 'velocity',
       targetVel: 0, damping: handJDamping
     },
   },
-
-
 
   {
     name: 'boxJoint1',  type: 'revolute',
@@ -262,8 +283,8 @@ const jointArray = [
     name: 'handJoint1',  type: 'prismatic',
     bodyA: 'hand1',  anchorA: apHandJnt1A,
     bodyB: 'hand2',  anchorB: o,
-    axis: y,
-    limits: [-0.05*mag, 0.65*mag],
+    axis: yInv,
+    limits: [-(redWidth-redFingerThickness), 0],
     motor: {
       type: 'velocity',
       targetVel: 0, damping: handJDamping
@@ -274,7 +295,7 @@ const jointArray = [
     bodyA: 'hand1',  anchorA: apHandJnt2A,
     bodyB: 'hand3',  anchorB: o,
     axis: y,
-    limits: [-0.65*mag, 0.05*mag],
+    limits: [-(redWidth-redFingerThickness), 0],
     motor: {
       type: 'velocity',
       targetVel: 0, damping: handJDamping
@@ -284,7 +305,7 @@ const jointArray = [
     name: 'endJoint1',  type: 'prismatic',
     bodyA: 'end1',  anchorA: apEndJnt1A,
     bodyB: 'end2',  anchorB: apEndJnt1B,
-    axis: y,
+    axis: yInv,
     limits: [-0.5, 0.5],
     motor: {
       type: 'position',
@@ -323,7 +344,7 @@ const functionArray = [
   { name: 'endJointClose',
     method: () => {
       getJoint('endJoint1')
-        .configureMotorPosition(0.1, endJStiffness, endJDamping);
+        .configureMotorPosition(-0.1, endJStiffness, endJDamping);
       getJoint('endJoint2')
         .configureMotorPosition(-0.1, endJStiffness, endJDamping);
     },
@@ -331,7 +352,7 @@ const functionArray = [
   { name: 'endJointOpen',
     method: () => {
       getJoint('endJoint1')
-        .configureMotorPosition(-0.1, endJStiffness, endJDamping);
+        .configureMotorPosition(0.1, endJStiffness, endJDamping);
       getJoint('endJoint2')
         .configureMotorPosition(0.1, endJStiffness, endJDamping);
     },
@@ -355,6 +376,7 @@ const functionArray = [
   { name: 'mapVeloc',
     method: (time,arg) => {
       Object.entries(arg).forEach(([key, value]) => {
+	console.log('WORKER:: joint:', key, 'velocity:', value);
 	getJoint(key).configureMotorVelocity(value, handJDamping);
       });
     },
