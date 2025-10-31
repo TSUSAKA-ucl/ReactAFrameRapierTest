@@ -197,18 +197,26 @@ const rigidBodyArray = [
   { name: 'obstacle3',
     position: {x: -0.35, y: 0.06, z: -1.3},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
-    collider: { shape: 'cylinder',
-		size: {radius: (0.02), halfHeight: (0.05)},
-		color: 'Blue',
-	      },
+    collider: [ { shape: 'cylinder',
+		  size: {radius: (0.02), halfHeight: (0.05)},
+		  color: 'Blue',
+		},
+	      ],
   },
   { name: 'obstacle4',
     position: {x: -0.35, y: 0.06, z: -1.2},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
-    collider: { shape: 'box',
-		size: {x: (0.02), y: 0.02, z: (0.07)},
-		color: 'Blue',
-	      },
+    collider: [ { shape: 'box',
+		  size: {x: (0.02), y: 0.02, z: (0.07)},
+		  opacity: 0.5,
+		  color: 'Blue',
+		},
+		{ shape: 'cylinder',
+		  translation: [0, 0.02+0.01, 0],
+		  size: {radius: (0.02), halfHeight: (0.01)},
+		  color: 'Red',
+		},
+	      ],
   },
 ];
 
@@ -241,6 +249,14 @@ const jakaHandJntR = {...jakaHandJntL}; jakaHandJntR.y = -jakaHandJntL.y;
 const endJStiffness = 2.0*800.0;
 const endJDamping = 1000.0;
 const handJDamping = 300.0;
+const velocMotor0 = (damping) => {
+  return { type: 'velocity', targetVel: 0, damping: damping };
+};
+const positionMotor0 = (stiffness, damping) => {
+  return { type: 'position', targetPos: 0,
+	   stiffness: stiffness, damping: damping};
+};
+
 //
 const jointArray = [
   {
@@ -249,10 +265,7 @@ const jointArray = [
     bodyB: 'jakaHandL',  anchorB: o,
     axis: y,
     limits: [-0.00, 0.04],
-    motor: {
-      type: 'velocity',
-      targetVel: 0, damping: handJDamping
-    },
+    motor: velocMotor0(handJDamping),
   },
   {
     name: 'jakaHandJR',  type: 'prismatic',
@@ -260,10 +273,7 @@ const jointArray = [
     bodyB: 'jakaHandR',  anchorB: o,
     axis: yInv,
     limits: [-0.00, 0.04],
-    motor: {
-      type: 'velocity',
-      targetVel: 0, damping: handJDamping
-    },
+    motor: velocMotor0(handJDamping),
   },
 
   {
@@ -285,10 +295,7 @@ const jointArray = [
     bodyB: 'hand2',  anchorB: o,
     axis: yInv,
     limits: [-(redWidth-redFingerThickness), 0],
-    motor: {
-      type: 'velocity',
-      targetVel: 0, damping: handJDamping
-    },
+    motor: velocMotor0(handJDamping),
   },
   {
     name: 'handJoint2',  type: 'prismatic',
@@ -296,10 +303,7 @@ const jointArray = [
     bodyB: 'hand3',  anchorB: o,
     axis: y,
     limits: [-(redWidth-redFingerThickness), 0],
-    motor: {
-      type: 'velocity',
-      targetVel: 0, damping: handJDamping
-    },
+    motor: velocMotor0(handJDamping),
   },
   {
     name: 'endJoint1',  type: 'prismatic',
@@ -307,10 +311,7 @@ const jointArray = [
     bodyB: 'end2',  anchorB: apEndJnt1B,
     axis: yInv,
     limits: [-0.5, 0.5],
-    motor: {
-      type: 'position',
-      targetPos: 0, stiffness: endJStiffness, damping: endJDamping
-    },
+    motor: positionMotor0(endJStiffness, endJDamping),
   },
   {
     name: 'endJoint2',  type: 'prismatic',
@@ -318,10 +319,7 @@ const jointArray = [
     bodyB: 'end3',  anchorB: apEndJnt2B,
     axis: y,
     limits: [-0.5, 0.5],
-    motor: {
-      type: 'position',
-      targetPos: 0, stiffness: endJStiffness, damping: endJDamping
-    },
+    motor: positionMotor0(endJStiffness, endJDamping),
   },
 ];
 

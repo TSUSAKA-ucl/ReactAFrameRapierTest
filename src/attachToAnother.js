@@ -13,10 +13,10 @@ AFRAME.registerComponent('attach-to-another', {
 	  console.warn(`Robot ${robot.id} has no endLink to attach to.`);
 	  return;
 	}
-	console.warn('QQQQQ endLink.hasLoaded?',endLink.hasLoaded);
+	// console.warn('QQQQQ endLink.hasLoaded?',endLink.hasLoaded);
 	try {
 	  endLink.appendChild(this.el);
-	  console.warn(`QQQQQ Attached ${this.el.id} to ${robot.id}'s endLink:`,endLink);
+	  console.log(`QQQQQ Attached ${this.el.id} to ${robot.id}'s endLink:`,endLink);
 	  this.el.removeAttribute('position');
 	  this.el.removeAttribute('rotation');
 	  this.el.removeAttribute('scale');
@@ -32,9 +32,9 @@ AFRAME.registerComponent('attach-to-another', {
 	attachToRobot(robotEl);
       } else if (typeof robotEl?.addEventListener === 'function') {
 	robotEl.addEventListener('robot-registered', () => {
-	  console.warn(`QQQQQ Received robot-registered event from ${this.data.to}`,
-		     'and attaching now.');
-	  // You can also check the id, axes, and endLinkEl in the event detail.
+	  // console.warn(`QQQQQ Received robot-registered event from ${this.data.to}`,
+	  // 	     'and attaching now.');
+	  // // You can also check the id, axes, and endLinkEl in the event detail.
 	  attachToRobot(robotEl);
 	});
       } else {

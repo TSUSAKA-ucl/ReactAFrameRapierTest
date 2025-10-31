@@ -78,24 +78,4 @@ AFRAME.registerComponent('rapier-func-controller', {
       }
     });
   },
-  tick: function() {
-    if (!this.registered) {
-      const robotRegistry = this.el.sceneEl.robotRegistryComp;
-      // const robotRegistry = document.getElementById('robot-registry');
-      if (robotRegistry) {
-	robotRegistry.add(this.data.robotId, {el: this.el, axes: []});
-	this.registered = true;
-      }
-    }
-  },
-  remove: function() {
-    if (this.registered) {
-      const robotRegistry = this.el.sceneEl.robotRegistryComp;
-      // const robotRegistry = document.getElementById('robot-registry');
-      if (robotRegistry) {
-	robotRegistry.remove(this.data.robotId);
-	this.registered = false;
-      }
-    }
-  }
 });

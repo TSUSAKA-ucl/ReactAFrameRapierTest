@@ -24,12 +24,12 @@ function ButtonUI() {
     }
     function darkColor(colorText) {
       const color = new THREE.Color(colorText);
-      console.log('darkColor input:', colorText, 'parsed:', color);
+      // console.log('darkColor input:', colorText, 'parsed:', color);
       const [h,s,v] = rgbToHsv(color.r, color.g, color.b);
       const v2 = v/2;
       const [r,g,b] = hsvToRgb(h,s,v2);
       const newColor = new THREE.Color(r,g,b);
-      console.log('darkColor output:', '#'+newColor.getHexString(), 'parsed:', newColor);
+      // console.log('darkColor output:', '#'+newColor.getHexString(), 'parsed:', newColor);
       return '#'+newColor.getHexString();
     }
     const startStopEl = startStopButton.current;

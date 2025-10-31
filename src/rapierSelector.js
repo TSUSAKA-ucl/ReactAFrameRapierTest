@@ -13,12 +13,23 @@ AFRAME.registerComponent('rapier-register', {
       if (id && sceneEl && robotRegistryComp) {
 	robotRegistryComp.add(id,
 			      {el: this.el, axes: [], endLink: this.el});
+	this.registered = true;
       }
     };
     if (sceneEl?.hasLoaded) {
       registerFunc();
     } else {
       sceneEl.addEventListener('loaded', registerFunc, {once: true});
+    }
+  },
+  remove: function() {
+    if (this.registered) {
+      const robotRegistry = this.el.sceneEl.robotRegistryComp;
+      // const robotRegistry = document.getElementById('robot-registry');
+      if (robotRegistry) {
+	robotRegistry.remove(this.data.robotId);
+	this.registered = false;
+      }
     }
   }
 });
