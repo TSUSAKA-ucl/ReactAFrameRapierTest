@@ -58,7 +58,7 @@ AFRAME.registerComponent('rapier-jaka-hand-width', {
 	}
 	if (this.consoleTimeDelta > 250.0) {
 	  // console.log('handLEl',handLEl, '  handREl',handREl);
-	  console.log('diff:',isoDiff[0],'halfWidth:', halfWidth,'angle1,2:',`${angle1} ${angle2}`);
+	  // console.log('diff:',isoDiff[0],'halfWidth:', halfWidth,'angle1,2:',`${angle1} ${angle2}`);
 	  // console.log('globalDestinationsRef:',globalDestinationsRef.current);
 	  this.consoleTimeDelta = 0;
 	}
