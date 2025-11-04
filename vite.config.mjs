@@ -8,13 +8,13 @@ export default defineConfig({
     react(),
     viteStaticCopy({
       targets: [
-        { src: 'node_modules/@ucl-nuee/ik-cd-worker/public/**',
+        { src: 'node_modules/@ucl-nuee/ik-cd-worker/public/*',
           dest: '.', },
-        { src: 'node_modules/@ucl-nuee/rapier-worker/dist-worker/**',
+        { src: 'node_modules/@ucl-nuee/rapier-worker/dist-worker/*',
           dest: '.', },
-        { src: 'node_modules/@ucl-nuee/jaka-zu5/public/**',
+        { src: 'node_modules/@ucl-nuee/jaka-zu5/public/*',
           dest: '.', },
-        { src: 'node_modules/@ucl-nuee/nova2/public/**',
+        { src: 'node_modules/@ucl-nuee/nova2/public/*',
           dest: '.', },
       ],
     }),

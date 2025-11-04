@@ -14,6 +14,7 @@ import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
 import '@ucl-nuee/robot-loader/armMotionUI.js';
 // import './eventForwarder.js';
 import './attachToAnother.js';
+import './jakaHandPoseRapier.js';
 
 // ****************
 // the entry point
@@ -48,7 +49,7 @@ function App() {
 
       <a-circle id="jaka-hand1-a"
                 robot-loader="model: jaka_hand_A"
-                set-joints-directly-in-degree="60, 30"
+                /* set-joints-directly-in-degree="60, 30" */
                 attach-to-another="to: jaka-plane"
 
                 position="0.25 0.5 -2" rotation="-90 0 90"
@@ -58,7 +59,7 @@ function App() {
       />
       <a-circle id="jaka-hand1-b"
                 robot-loader="model: jaka_hand_B"
-                set-joints-directly-in-degree="60, 30"
+                /* set-joints-directly-in-degree="60, 30" */
                 attach-to-another="to: jaka-plane"
 
                 position="0.25 0.5 -2" rotation="-90 0 90"
@@ -76,6 +77,7 @@ function App() {
                arm-motion-ui
                rapier-rigidbody-attach="rigidBody: jakaHand; position: 0 0 0.0; quaternion: 0 0 0 1"
                rapier-func-controller
+               rapier-jaka-hand-width="rapeirHandL: jakaHandL; rapeirHandR: jakaHandR; aframeHandL: jaka-hand1-a; aframeHandR: jaka-hand1-b"
                /* event-forwarder="destination: jaka-hand1-a; events: robot-registered" */
                /* event-forwarder="destination: jaka-hand1-b; events: robot-registered" */
       />
