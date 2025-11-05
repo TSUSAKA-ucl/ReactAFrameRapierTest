@@ -46,8 +46,10 @@ AFRAME.registerComponent('rapier-func-controller', {
 	  args: args
         })
       } break;
-      case 'suck': // fix
+      case 'fix': // fix
         globalWorkerRef?.current?.postMessage({
+	  type: 'call',
+	  // name: 'contactGraph',
           type: 'fix',
 	  name: 'fix-nova2Hand',
           bodyA: 'nova2Sucker',

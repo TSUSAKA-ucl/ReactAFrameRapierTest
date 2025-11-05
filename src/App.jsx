@@ -7,7 +7,7 @@ import ButtonUI from './ButtonUI.jsx';
 import './rapierHand1MotionUI.js';
 import './rapierRigidbodyAttach.js';
 import './rapierFuncController.js';
-import './rapierFixTwoObjects.js';
+import './rapierFixBySucker.js';
 import '@ucl-nuee/robot-loader/robotLoader.js';
 import '@ucl-nuee/robot-loader/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
@@ -70,7 +70,7 @@ function App() {
       <a-plane id="jaka-plane"
                robot-loader="model: jaka_zu_5"
                position="0 0.0 -1.25" rotation="-90 0 90"
-               width="2" height="2" color="lightcoral"
+               width="0.02" height="0.02" color="lightcoral"
                material="opacity: 0.15; transparent: true; side: double;"
                ik-worker={`${deg22}, ${deg67}, ${-deg67}, ${deg90}, ${deg90}, 0`}
                reflect-worker-joints
@@ -83,7 +83,7 @@ function App() {
       />
       <a-plane id="nova2-plane"
                position="-1.0 0.0 -1.0" rotation="-90 0 90"
-               width="2" height="2" color="beige"
+               width="0.02" height="0.02" color="beige"
                material="opacity: 0.15; transparent: true; side: double;"
                robot-loader="model: nova2_robot"
                ik-worker={`${deg90}, ${-deg90}, ${deg90}, 0, ${-deg90}, 0`}
@@ -91,7 +91,7 @@ function App() {
                arm-motion-ui
                rapier-rigidbody-attach="rigidBody: nova2Sucker; position: 0 0 0.21; quaternion: 0.707107 0 0 0.707107"
                rapier-func-controller
-               rapier-fix-two-objects="hand: nova2Sucker; object: cylinder1"
+               rapier-fix-by-sucker="hand: nova2Sucker"
       />
       {/* <a-sky color="#ECECEC"></a-sky> */}
     </a-scene>

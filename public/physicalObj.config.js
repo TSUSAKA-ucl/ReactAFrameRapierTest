@@ -34,10 +34,11 @@ const jakaFingerLength=0.112/2;
 const rigidBodyArray = [
   { name: 'floor',
     type: 'kinematicPosition',
-    position: {x: 0, y: -0.1, z: 0},
+    position: {x: 0, y: -1, z: 0},
     collider: { shape: 'box',
-		size: {x: 10.5, y:0.1, z:10.5},
+		size: {x: 10.5, y:1, z:10.5},
 		color: '#7BC8A4',
+		// opacity: 0.5,
 	      },
   },
   { name: 'nova2Sucker',
@@ -407,7 +408,101 @@ const functionArray = [
       });
     },
   },
+  { name: 'contactGraph',
+    method: (time,arg) => {
+      console.log('name:', arg.name);
+      const rigidBody = getRigidBody(arg.name);
+      console.log('rigidBody:', rigidBody);
+      const collider = rigidBody.collider(0);
+      self.world.contactPairsWith(collider, (otherCollider) => {
+	console.log("NEAR COLLIDER:", otherCollider);
+      });
+    },
+  },
+  { name: 'rayCastFix',
+    method: (time,arg) => {
+      console.log('name:', arg.name);
+      const rigidBody = getRigidBody(arg.name);
+      const collider = rigidBody.collider(0);
+      // console.log('collider rot:', collider.rotation());
+      // console.log('collider origin:', collider.translation());
+      // console.log('collider halfHeight:', collider.halfHeight());
+      const start = collider.translation();
+      const rot = collider.rotation();
+      const hh = collider.halfHeight();
+      const localDirection = {x:0, y: 1, z: 0};
+      const direction = rotateVecByQuat(localDirection, rot);
+      if (rigidBody && collider && start && rot && hh) {
+	const ray = new self.RAPIER.Ray(start, direction);
+	// console.log('ray origin:', ray.origin, ' dir:', ray.dir);
+	const maxToi = 0.5 + hh;
+	const filterFlags = self.RAPIER.QueryFilterFlags.EXCLUDE_FIXED
+	      || self.RAPIER.QueryFilterFlags.EXCLUDE_SENSORS
+	      || self.RAPIER.QueryFilterFlags.EXCLUDE_KINEMATICS;
+	const filterGroup = 0x000b0001;
+	const excludeCollider = collider;
+	const hit = self.world.castRayAndGetNormal(ray, maxToi, false,
+						   filterFlags, filterGroup,
+						   excludeCollider);
+	if (hit) {
+	  const fixName = 'rayCastFixJoint';
+	  console.log('HIT collider:', hit.collider);
+	  console.log('HIT rigidBody:', hit.collider?.parent());
+	  console.log('HIT featureType:', hit.featureType);
+	  console.log('HIT toi:', hit.timeOfImpact);
+	  const distance = hit.timeOfImpact * 1.0 - hh;
+	  console.log('distance:', distance);
+	  console.log('HIT normal:', hit.normal);
+	  if (-0.01 < distance && distance < 0.01) {
+	    self.fixRigidBodies(fixName, rigidBody, hit.collider.parent());
+	  } else {
+	    console.warn('OUT OF RANGE. distance:', distance);
+	  }
+	} else {
+	  console.warn('NO HIT');
+	}
+      }
+    },
+  },
+  { name: 'clearFixedRB',
+    method: (time, arg) => {
+      const fixName = 'rayCastFixJoint';
+      self.clearFixedRigidBodies(fixName);
+    },
+  },
 ];
+
+// function vector3add(v1,v2) {
+//   return {
+//     x: v1.x + v2.x,
+//     y: v1.y + v2.y,
+//     z: v1.z + v2.z,
+//   };
+// }
+// quaternion と vector の積（回転）を計算するヘルパー
+function rotateVecByQuat(v, q) {
+  // q = (x, y, z, w)
+  const x = q.x, y = q.y, z = q.z, w = q.w;
+
+  // q のベクトル部分
+  // const qv = { x, y, z };
+
+  // t = 2 * cross(q.xyz, v)
+  const t = {
+    x: 2 * (y * v.z - z * v.y),
+    y: 2 * (z * v.x - x * v.z),
+    z: 2 * (x * v.y - y * v.x)
+  };
+
+  // v' = v + w*t + cross(q.xyz, t)
+  return {
+    x: v.x + w * t.x + (y * t.z - z * t.y),
+    y: v.y + w * t.y + (z * t.x - x * t.z),
+    z: v.z + w * t.z + (x * t.y - y * t.x),
+  };
+}
+
+
 
 // ****************
 // exports
