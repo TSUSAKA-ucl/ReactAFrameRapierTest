@@ -89,7 +89,7 @@ function App() {
                ik-worker={`${deg90}, ${-deg90}, ${deg90}, 0, ${-deg90}, 0`}
                reflect-worker-joints
                arm-motion-ui
-               rapier-rigidbody-attach="rigidBody: nova2Sucker; position: 0 0 0.21; quaternion: 0.707107 0 0 0.707107"
+               rapier-rigidbody-attach="rigidBody: nova2SuckerBase; position: 0 0 0.17; quaternion: 0.707107 0 0 0.707107"
                rapier-func-controller
                rapier-fix-by-sucker="hand: nova2Sucker"
       />
