@@ -26,12 +26,12 @@ function App() {
   const deg45 = Math.PI/4;
   const deg22 = Math.PI/8;
   return (
-    <a-scene xr-mode-ui="XRMode: ar">
+    <a-scene xr-mode-ui="XRMode: xr" >
       <a-entity id="robot-registry"
                 robot-registry >
         <VrControllerComponents />
       </a-entity>
-      <a-entity camera position="-0.5 1.2 1.7"
+      <a-entity camera position="-0.5 1.2 1.2"
                 look-controls="enabled: false"></a-entity>
 
       <ButtonUI />

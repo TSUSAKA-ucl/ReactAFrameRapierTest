@@ -331,6 +331,13 @@ const jointArray = [
 	     stiffness: 1000,
 	     damping: 63.25,
 	   },
+    // type: 'fixed',
+    // bodyA: 'nova2SuckerBase',
+    // bodyB: 'nova2Sucker',
+    // positionA: {x:0, y:0.04, z:0},
+    // positionB: {x:0, y:0, z:0},
+    // orientationA: {w:1, x:0, y:0, z:0},
+    // orientationB: {w:1, x:0, y:0, z:0},
   },
   {
     name: 'jakaHandJL',  type: 'prismatic',
