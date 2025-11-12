@@ -9,7 +9,8 @@ import '@ucl-nuee/robot-loader/axesFrame.js';
 export default VrControllerComponents;
 
 function VrControllerComponents() {
-  const menuItems = "nova2-plane,release,rapier,deact,jaka-plane,open,ray,fix";
+  const menuItems1 = "nova2-plane,k3lit-kinova,rapier,deact,jaka-plane,g1l-unitree-l-arm,ray,g1r-unitree-r-arm";
+  const menuItems2 = "nova2-plane,k3lit-kinova,rapier,g1l-unitree-l-arm,jaka-plane,g1l-unitree-l-arm,ray,kinova-gen3";
 
   return (
     <>
@@ -17,7 +18,7 @@ function VrControllerComponents() {
                 laser-controls="hand: right"
                 raycaster="objects: .clickable"
                 line="color: blue; opacity: 0.75"
-                thumbstick-menu={`items: ${menuItems}`}
+                thumbstick-menu={`items: ${menuItems1}`}
                 thumbmenu-event-handler
                 target-selector
                 rapier-selector
@@ -27,7 +28,7 @@ function VrControllerComponents() {
       </a-entity>
       <a-entity left-controller
                 laser-controls="hand: left"
-                thumbstick-menu={`items: ${menuItems}`}
+                thumbstick-menu={`items: ${menuItems2}`}
                 thumbmenu-event-handler
                 target-selector
                 rapier-selector
