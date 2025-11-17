@@ -5,6 +5,7 @@
 mv package.json package.json.URL
 cat package.json.URL | sed -e \
 's|https://github.com/TSUSAKA-ucl/\([^/"]*\)/.*\.tgz"|file:../\1"|
+/@ucl-nuee.ur5e/s|robot-assets"|robot-assets/ur5e"|
 /@ucl-nuee.nova2/s|robot-assets"|robot-assets/nova2"|
 /@ucl-nuee.kinova-gen3/s|robot-assets"|robot-assets/kinova-gen3"|
 /@ucl-nuee.kinova-gen3-lite/s|robot-assets"|robot-assets/kinova-gen3-lite"|

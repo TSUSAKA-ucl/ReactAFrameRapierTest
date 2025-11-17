@@ -20,6 +20,7 @@ export default defineConfig({
         { src: 'node_modules/@ucl-nuee/kinova-gen3-lite/public/*', dest: '.', },
         { src: 'node_modules/@ucl-nuee/g1-right/public/*', dest: '.', },
         { src: 'node_modules/@ucl-nuee/g1-left/public/*', dest: '.', },
+        { src: 'node_modules/@ucl-nuee/ur5e/public/*', dest: '.', },
       ],
     }),
   ],

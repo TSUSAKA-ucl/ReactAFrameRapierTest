@@ -9,7 +9,7 @@ import '@ucl-nuee/robot-loader/axesFrame.js';
 export default VrControllerComponents;
 
 function VrControllerComponents() {
-  const menuItems1 = "nova2-plane,k3lit-kinova,rapier,deact,jaka-plane,g1l-unitree-l-arm,ray,g1r-unitree-r-arm";
+  const menuItems1 = "nova2-plane,ur5e,rapier,deact,jaka-plane,g1l-unitree-l-arm,ray,g1r-unitree-r-arm";
   const menuItems2 = "nova2-plane,k3lit-kinova,rapier,g1l-unitree-l-arm,jaka-plane,g1l-unitree-l-arm,ray,kinova-gen3";
 
   return (
