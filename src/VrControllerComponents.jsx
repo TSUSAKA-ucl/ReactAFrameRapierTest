@@ -2,7 +2,6 @@
 // ********
 import AFRAME from 'aframe';
 import '@ucl-nuee/robot-loader/vrControllerThumbMenu.js'; // with thumbMenuEventHandler
-import './rapierSelector.js';
 import '@ucl-nuee/robot-loader/axesFrame.js';
 
 
@@ -21,7 +20,6 @@ function VrControllerComponents() {
                 thumbstick-menu={`items: ${menuItems1}`}
                 thumbmenu-event-handler
                 target-selector
-                rapier-selector
                 event-distributor
                 visible="true">
         <a-entity a-axes-frame="length: 0.1" />
@@ -31,7 +29,6 @@ function VrControllerComponents() {
                 thumbstick-menu={`items: ${menuItems2}`}
                 thumbmenu-event-handler
                 target-selector
-                rapier-selector
                 event-distributor
                 visible="true">
         <a-entity a-axes-frame="length: 0.1" />

@@ -8,19 +8,9 @@ export default defineConfig({
     react(),
     viteStaticCopy({
       targets: [
-        { src: 'node_modules/@ucl-nuee/ik-cd-worker/public/*',
-          dest: '.', },
-        { src: 'node_modules/@ucl-nuee/rapier-worker/dist-worker/*',
-          dest: '.', },
-        { src: 'node_modules/@ucl-nuee/jaka-zu5/public/*',
-          dest: '.', },
-        { src: 'node_modules/@ucl-nuee/nova2/public/*',
-          dest: '.', },
-        { src: 'node_modules/@ucl-nuee/kinova-gen3/public/*', dest: '.', },
-        { src: 'node_modules/@ucl-nuee/kinova-gen3-lite/public/*', dest: '.', },
+        { src: 'node_modules/@ucl-nuee/ik-cd-worker/public/*', dest: '.', },
         { src: 'node_modules/@ucl-nuee/g1-right/public/*', dest: '.', },
         { src: 'node_modules/@ucl-nuee/g1-left/public/*', dest: '.', },
-        { src: 'node_modules/@ucl-nuee/ur5e/public/*', dest: '.', },
       ],
     }),
   ],
@@ -29,14 +19,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-      },
-    },
-  },
-  build2: {
-    outDir: 'dist2',
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index2.html'),
       },
     },
   },
