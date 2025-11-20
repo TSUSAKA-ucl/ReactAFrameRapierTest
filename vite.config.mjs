@@ -32,4 +32,12 @@ export default defineConfig({
       },
     },
   },
+  build2: {
+    outDir: 'dist2',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index2.html'),
+      },
+    },
+  },
 });

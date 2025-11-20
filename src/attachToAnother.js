@@ -10,6 +10,7 @@ AFRAME.registerComponent('attach-to-another', {
 	// attach this.el to robot's endLink
 	const endLink = robot?.endLink;
 	if (!endLink) {
+	  console.warn('endLink:',endLink);
 	  console.warn(`Robot ${robot.id} has no endLink to attach to.`);
 	  return;
 	}
@@ -22,13 +23,16 @@ AFRAME.registerComponent('attach-to-another', {
 	  this.el.removeAttribute('scale');
 	  this.el.object3D.position.set(0, 0, 0);
 	  this.el.object3D.quaternion.set(0, 0, 0, 1);
+	  robot.emit('attached', {child: this.el}, false);
+	  this.el.emit('attached', {parent: robot, endLink: endLink}, false);
+	  // forwardABbuttonEvent(robot, this.el);
 	} catch (e) {
 	  console.error('appendChild failed:',e);
 	}
       };
       const robotEl = document.getElementById(this.data.to);
-      if (Array.isArray(robotEl?.axes) && // robot has been registered
-	  robotEl.endLink) {
+      // console.warn('QQQQQ attach-to-another: found robotEl.id:', robotEl.id);
+      if (robotEl?.endLink && Array.isArray(robotEl?.axes) ) { // robot has been registered
 	attachToRobot(robotEl);
       } else if (typeof robotEl?.addEventListener === 'function') {
 	robotEl.addEventListener('robot-registered', () => {
@@ -47,5 +51,37 @@ AFRAME.registerComponent('attach-to-another', {
     } else {
       this.el.sceneEl.addEventListener('loaded', onSceneLoaded);
     }
+  }
+});
+
+
+//    const forwardABbuttonEvent = (from,a,b, to) => {
+function forwardABbuttonEvent(from,a,b, to) {
+  from.addEventListener(a+'buttondown', (evt) => {
+    console.warn('forwarding abuttondown event to attached child:', to);
+    to.emit('abuttondown', evt, false);
+  });
+  from.addEventListener(a+'buttonup', (evt) => {
+    console.warn('forwarding abuttonup event to attached child:', to);
+    to.emit('abuttonup', evt, false);
+  });
+  from.addEventListener(b+'buttondown', (evt) => {
+    console.warn('forwarding bbuttondown event to attached child:', to);
+    to.emit('bbuttondown', evt, false);
+  });
+  from.addEventListener(b+'buttonup', (evt) => {
+    console.warn('forwarding bbuttonup event to attached child:', to);
+    to.emit('bbuttonup', evt, false);
+  });
+}
+
+AFRAME.registerComponent('attach-event-broadcaster', {
+  init: function() {
+    this.el.addEventListener('attached', (evt) => {
+      const child = evt.detail.child;
+      console.warn('###### event broadcaster: attached event received:', evt);
+      forwardABbuttonEvent(this.el, 'a', 'b', child);
+      forwardABbuttonEvent(this.el, 'x', 'y', child);
+    });
   }
 });

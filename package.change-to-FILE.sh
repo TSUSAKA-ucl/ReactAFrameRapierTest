@@ -7,8 +7,8 @@ cat package.json.URL | sed -e \
 's|https://github.com/TSUSAKA-ucl/\([^/"]*\)/.*\.tgz"|file:../\1"|
 /@ucl-nuee.ur5e/s|robot-assets"|robot-assets/ur5e"|
 /@ucl-nuee.nova2/s|robot-assets"|robot-assets/nova2"|
-/@ucl-nuee.kinova-gen3/s|robot-assets"|robot-assets/kinova-gen3"|
 /@ucl-nuee.kinova-gen3-lite/s|robot-assets"|robot-assets/kinova-gen3-lite"|
-/@ucl-nuee.g1-right/s|robot-assets"|robot-assets/g1-rigth"|
+/@ucl-nuee.kinova-gen3/s|robot-assets"|robot-assets/kinova-gen3"|
+/@ucl-nuee.g1-right/s|robot-assets"|robot-assets/g1-right"|
 /@ucl-nuee.g1-left/s|robot-assets"|robot-assets/g1-left"|
 /@ucl-nuee.jaka-zu5/s|robot-assets"|robot-assets/jaka-zu5"|'\ >> package.json
