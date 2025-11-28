@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@ucl-nuee/g1-left':
-        specifier: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.1.tgz
-        version: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.1.tgz
+        specifier: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.2.tgz
+        version: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.2.tgz
       '@ucl-nuee/g1-right':
-        specifier: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.1.tgz
-        version: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.1.tgz
+        specifier: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.2.tgz
+        version: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.2.tgz
       '@ucl-nuee/ik-cd-worker':
-        specifier: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.11.tgz
-        version: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.11.tgz(@msgpack/msgpack@3.1.2)(aframe@1.7.1)
+        specifier: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.12.tgz
+        version: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.12.tgz(@msgpack/msgpack@3.1.2)(aframe@1.7.1)
       '@ucl-nuee/robot-loader':
         specifier: https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.11.tgz
         version: https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.11.tgz(eslint@9.39.1)(typescript@5.9.3)
@@ -596,17 +596,17 @@ packages:
     resolution: {integrity: sha512-/++5CYLQqsO9HFGLI7APrxBJYo+5OCMpViuhV8q5/Qa3o5mMrF//eQHks+PXcsAVaLdn817fMuS7zqoXNNZGaw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@ucl-nuee/g1-left@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.1.tgz':
-    resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.1.tgz}
-    version: 1.0.1
+  '@ucl-nuee/g1-left@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.2.tgz':
+    resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.2.tgz}
+    version: 1.0.2
 
-  '@ucl-nuee/g1-right@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.1.tgz':
-    resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.1.tgz}
-    version: 1.0.1
+  '@ucl-nuee/g1-right@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.2.tgz':
+    resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.2.tgz}
+    version: 1.0.2
 
-  '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.11.tgz':
-    resolution: {tarball: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.11.tgz}
-    version: 0.2.11
+  '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.12.tgz':
+    resolution: {tarball: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.12.tgz}
+    version: 0.2.12
     hasBin: true
     peerDependencies:
       '@msgpack/msgpack': ^3.1.2
@@ -2776,11 +2776,11 @@ snapshots:
       '@typescript-eslint/types': 8.46.4
       eslint-visitor-keys: 4.2.1
 
-  '@ucl-nuee/g1-left@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.1.tgz': {}
+  '@ucl-nuee/g1-left@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.2.tgz': {}
 
-  '@ucl-nuee/g1-right@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.1.tgz': {}
+  '@ucl-nuee/g1-right@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.2.tgz': {}
 
-  '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.11.tgz(@msgpack/msgpack@3.1.2)(aframe@1.7.1)':
+  '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.12.tgz(@msgpack/msgpack@3.1.2)(aframe@1.7.1)':
     dependencies:
       '@msgpack/msgpack': 3.1.2
       aframe: 1.7.1

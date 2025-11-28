@@ -1,0 +1,72 @@
+import AFRAME from 'aframe'
+
+AFRAME.registerComponent('change-opacity', {
+  schema: {
+    opacity: {type: 'number', default: 1.2},
+  },
+  init: function () {
+    this.el.addEventListener('model-loaded', () => {
+      this.updateOpacity(this.data.opacity);
+    });
+  },
+
+  update: function () {
+    this.updateOpacity(this.data.opacity);
+  },
+
+  updateOpacity: function (opacity) {
+    if (opacity > 1.0) return; // 何もしない
+    const obj = this.el.getObject3D('mesh');
+    if (!obj) return;
+
+    obj.traverse((node) => {
+      if (node.isMesh && node.material) {
+        node.material.transparent = opacity < 1.0; // 透明度必要
+        node.material.opacity = opacity;
+        node.material.needsUpdate = true;
+      }
+    });
+  }
+});
+
+AFRAME.registerComponent('attach-opacity-recursively', {
+  schema: {
+    opacity: {default: 1.1},
+  },
+  init: function () {
+    const root = this.el;
+    const opacityVal = this.data.opacity;
+    if (opacityVal > 1.0) return;
+
+    // DFS
+    const traverse = (node) => {
+      // gltf-model を持っていれば change-opacity を付与
+      if (node.hasAttribute('gltf-model')) {
+        node.setAttribute('change-opacity', `opacity: ${opacityVal}`);
+      }
+
+      const children = node.children;
+      if (!children || children.length === 0) return;
+
+      // 子を再帰的に辿る
+      for (let i = 0; i < children.length; i++) {
+	const child = children[i];
+        // childEl が A-Frame の entity であることを確認
+        if (
+          child.tagName === 'A-ENTITY' ||
+          Object.prototype.hasOwnProperty.call(child, 'object3D')
+        ) {
+          traverse(child);
+        }
+      }
+    };
+    if (this.el.endLink) {
+      traverse(root);
+    } else {
+      this.el.addEventListener('robot-registered', () => {
+	console.warn('CCCCC add-event el:', this.el);
+	traverse(root);
+      });
+    }
+  }
+});

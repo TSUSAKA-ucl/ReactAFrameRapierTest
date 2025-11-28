@@ -12,9 +12,9 @@
     "depgraph": "npx depcruise src/main.jsx --exclude '^node_modules/\\.pnpm' --output-type dot | dot -Tsvg > graph.svg"
   },
   "dependencies": {
-    "@ucl-nuee/g1-left": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.1.tgz",
-    "@ucl-nuee/g1-right": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.1.tgz",
-    "@ucl-nuee/ik-cd-worker": "https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.11.tgz",
+    "@ucl-nuee/g1-left": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.2.tgz",
+    "@ucl-nuee/g1-right": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.2.tgz",
+    "@ucl-nuee/ik-cd-worker": "https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.12.tgz",
     "@ucl-nuee/robot-loader": "https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.11.tgz",
     "aframe": "^1.7.1",
     "eslint-plugin-react": "^7.37.5",
