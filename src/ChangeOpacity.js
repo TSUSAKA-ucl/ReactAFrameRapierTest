@@ -41,7 +41,8 @@ AFRAME.registerComponent('attach-opacity-recursively', {
     // DFS
     const traverse = (node) => {
       // gltf-model を持っていれば change-opacity を付与
-      if (node.hasAttribute('gltf-model')) {
+      if (node.classList.contains('visual') &&
+	  node.hasAttribute('gltf-model')) {
         node.setAttribute('change-opacity', `opacity: ${opacityVal}`);
       }
 
@@ -56,7 +57,9 @@ AFRAME.registerComponent('attach-opacity-recursively', {
           child.tagName === 'A-ENTITY' ||
           Object.prototype.hasOwnProperty.call(child, 'object3D')
         ) {
-          traverse(child);
+	  if (['link', 'axis', 'visual'].some(cls => child.classList.contains(cls))) {
+            traverse(child);
+	  }
         }
       }
     };

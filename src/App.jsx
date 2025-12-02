@@ -11,19 +11,23 @@ import '@ucl-nuee/robot-loader/baseMover.js';
 import '@ucl-nuee/robot-loader/attachToAnother.js';
 import './fingerCloser.js';
 import './ChangeOpacity.js';
+import './VerticalControls.js';
 
 // ****************
 // the entry point
 // :
 function App() {
   return (
-    <a-scene xr-mode-ui="XRMode: xr">
+    <a-scene xr-mode-ui="XRMode: xr"
+    	     keyboard-shortcuts="enterVR: false"
+    >
       <a-entity id="robot-registry"
                 robot-registry >
         <VrControllerComponents />
       </a-entity>
       <a-entity camera position="-0.5 1.2 1.2"
 		wasd-controls="acceleration: 20; maxSpeed: 0.05"
+                vertical-controls
 		look-controls></a-entity>
 
       <a-plane id="unitree-g1-torso"
@@ -54,6 +58,7 @@ function App() {
                     finger-closer
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
+                    attach-opacity-recursively="opacity: 0.2;"
           />
           <a-circle id="g1rm-unitree-r-middle"
                     robot-loader="model: g1-right-middle"
@@ -61,6 +66,7 @@ function App() {
                     finger-closer
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
+                    attach-opacity-recursively="opacity: 0.2;"
           />
         </a-plane>
 
@@ -79,6 +85,7 @@ function App() {
                     finger-closer="stationaryJoints: 0; closeMax: 45"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
+                    attach-opacity-recursively="opacity: 0.2;"
           />
           <a-circle id="g1li-unitree-l-index"
                     robot-loader="model: g1-left-index"
