@@ -4,6 +4,12 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { resolve } from 'path';
 
 export default defineConfig({
+  optimizeDeps: {
+    exclude: [
+      '@ucl-nuee/ik-cd-worker',
+      '@ucl-nuee/robot-loader',
+    ]
+  },
   plugins: [
     react(),
     viteStaticCopy({
