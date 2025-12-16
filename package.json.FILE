@@ -1,0 +1,59 @@
+{
+  "name": "@ucl-nuee/react-aframe-rapier-test",
+  "version": "1.1.2",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "depgraph": "npx depcruise src/main.jsx --exclude '^node_modules/\\.pnpm' --output-type dot | dot -Tsvg > graph.svg"
+  },
+  "dependencies": {
+    "@ucl-nuee/g1-left": "file:../robot-assets/g1-left",
+    "@ucl-nuee/g1-right": "file:../robot-assets/g1-right",
+    "@ucl-nuee/jaka-zu5": "file:../robot-assets/jaka-zu5",
+    "@ucl-nuee/nova2": "file:../robot-assets/nova2",
+    "@ucl-nuee/ur5e": "file:../robot-assets/ur5e",
+    "@ucl-nuee/kinova-gen3": "file:../robot-assets/kinova-gen3",
+    "@ucl-nuee/kinova-gen3-lite": "file:../robot-assets/kinova-gen3-lite",
+    "@ucl-nuee/sciurus17left" : "file:../robot-assets/sciurus17left",
+    "@ucl-nuee/sciurus17right" : "file:../robot-assets/sciurus17right",
+
+    "@ucl-nuee/ik-cd-worker": "file:../ik-cd-worker",
+    "@ucl-nuee/rapier-worker": "file:../AFrameRapierWorker",
+    "@ucl-nuee/robot-loader": "file:../robot-loader",
+    "aframe": "^1.7.1",
+    "eslint-plugin-react": "^7.37.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "dependency-cruiser": "^17.0.2",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "vite": "^7.1.2",
+    "vite-plugin-static-copy": "^3.1.2"
+  },
+  "exports": {
+    "./armMotionUI.js": "src/armMotionUI.js",
+    "./axesFrame.js": "src/axesFrame.js",
+    "./ikWorker.js": "src/ikWorker.js",
+    "./reflectWorkerJoints.js": "src/reflectWorkerJoints.js",
+    "./robotLoader.js": "src/robotLoader.js",
+    "./robotRegistry.js": "src/robotRegistry.js",
+    "./vrControllerThumbMenu.js": "src/vrControllerThumbMenu.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.1"
+}

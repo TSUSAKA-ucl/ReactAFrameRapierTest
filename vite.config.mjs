@@ -14,14 +14,14 @@ export default defineConfig({
     react(),
     viteStaticCopy({
       targets: [
-        { src: 'node_modules/@ucl-nuee/ik-cd-worker/public/*',
-          dest: '.', },
-        { src: 'node_modules/@ucl-nuee/rapier-worker/dist-worker/*',
-          dest: '.', },
-        { src: 'node_modules/@ucl-nuee/jaka-zu5/public/*',
-          dest: '.', },
-        { src: 'node_modules/@ucl-nuee/nova2/public/*',
-          dest: '.', },
+        { src: 'node_modules/@ucl-nuee/ik-cd-worker/public/*', dest: '.', },
+        { src: 'node_modules/@ucl-nuee/rapier-worker/dist-worker/*', dest: '.', },
+
+        { src: 'node_modules/@ucl-nuee/jaka-zu5/public/*', dest: '.', },
+        { src: 'node_modules/@ucl-nuee/nova2/public/*', dest: '.', },
+	{ src: 'node_modules/@ucl-nuee/sciurus17left/public/*', dest: '.', },
+	{ src: 'node_modules/@ucl-nuee/sciurus17right/public/*', dest: '.', },
+
         { src: 'node_modules/@ucl-nuee/kinova-gen3/public/*', dest: '.', },
         { src: 'node_modules/@ucl-nuee/kinova-gen3-lite/public/*', dest: '.', },
         { src: 'node_modules/@ucl-nuee/g1-right/public/*', dest: '.', },
