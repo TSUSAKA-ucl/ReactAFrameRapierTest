@@ -73,3 +73,71 @@ AFRAME.registerComponent('attach-opacity-recursively', {
     }
   }
 });
+
+AFRAME.registerComponent('change-color', {
+  schema: {
+    color: {type: 'string', default: 'white'},
+  },
+  init: function () {
+    this.el.addEventListener('model-loaded', () => {
+      this.updateColor(this.data.color);
+    });
+  },
+  update: function () {
+    this.updateColor(this.data.color);
+  },
+  updateColor: function (color) {
+    const obj = this.el.getObject3D('mesh');
+    if (!obj) return;
+
+    obj.traverse((node) => {
+      if (node.isMesh && node.material) {
+	node.material.color = new THREE.Color(color);
+	node.material.needsUpdate = true;
+      }
+    });
+  }
+});
+
+AFRAME.registerComponent('attach-color-recursively', {
+  schema: {
+    color: {default: 'white'},
+  },
+  init: function () {
+    const root = this.el;
+    const colorVal = this.data.color;
+
+    // DFS
+    const traverse = (node) => {
+      // gltf-model を持っていれば change-color を付与
+      if (node.classList.contains('visual') &&
+	  node.hasAttribute('gltf-model')) {
+	node.setAttribute('change-color', `color: ${colorVal}`);
+      }
+
+      const children = node.children;
+      if (!children || children.length === 0) return;
+
+      // 子を再帰的に辿る
+      for (let i = 0; i < children.length; i++) {
+	const child = children[i];
+	// childEl が A-Frame の entity であることを確認
+	if (
+	  child.tagName === 'A-ENTITY' ||
+	  Object.prototype.hasOwnProperty.call(child, 'object3D')
+	) {
+	  if (['link', 'axis', 'visual'].some(cls => child.classList.contains(cls))) {
+	    traverse(child);
+	  }
+	}
+      }
+    };
+    if (this.el.endLink) {
+      traverse(root);
+    } else {
+      this.el.addEventListener('robot-registered', () => {
+	traverse(root);
+      });
+    }
+  }
+});

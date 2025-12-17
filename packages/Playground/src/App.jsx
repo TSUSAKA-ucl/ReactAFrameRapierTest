@@ -13,7 +13,6 @@ import '@ucl-nuee/ik-cd-worker/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
 import '@ucl-nuee/robot-loader/armMotionUI.js';
 import '@ucl-nuee/robot-loader/baseMover.js';
-// import './eventForwarder.js';
 import '@ucl-nuee/robot-loader/attachToAnother.js';
 import './jakaHandPoseRapier.js';
 import './addFrameToJoints.js';
@@ -42,19 +41,15 @@ function App() {
                 vertical-controls
                 look-controls></a-entity>
 
-      <ButtonUI />
-      {/* <a-cylinder position="1.25 0.2 -0.75" */}
-      {/*             radius="0.12" height="0.4" color="#FFC65D" */}
-      {/*             material="opacity: 0.35; transparent: true"> */}
-      {/* </a-cylinder> */}
+      {/* <ButtonUI /> */}
 
-      <a-entity
-        id="rapier-controller"
-        rapier-register
-        rapier-hand1-motion-ui
-        rapier-func-controller
-        rapier-open-close-gripper
-      />
+      {/* <a-entity */}
+      {/*   id="rapier-controller" */}
+      {/*   rapier-register */}
+      {/*   rapier-hand1-motion-ui */}
+      {/*   rapier-func-controller */}
+      {/*   rapier-open-close-gripper */}
+      {/* /> */}
 
       {/* <a-circle id="jaka-hand1-a" */}
       {/*           robot-loader="model: jaka_hand_A" */}
@@ -104,16 +99,16 @@ function App() {
       {/*          rapier-fix-by-sucker="hand: nova2Sucker" */}
       {/*          base-mover */}
       {/* /> */}
-      {/* <a-plane id="kinova-gen3" */}
-      {/*          position="-2.0 0.0 -2.0" rotation="-90 0 90" */}
-      {/*          width="0.02" height="0.02" color="blue" */}
-      {/*          material="opacity: 0.5; transparent: true; side: double;" */}
-      {/*          robot-loader="model: kinova-gen3" */}
-      {/*          ik-worker={`${0}, ${0}, ${0}, ${deg90}, ${0}, ${deg90}, 0`} */}
-      {/*          reflect-worker-joints */}
-      {/*          base-mover */}
-      {/*          arm-motion-ui */}
-      {/* /> */}
+      <a-plane id="kinova-gen3"
+               position="-2.0 0.0 -2.0" rotation="-90 0 90"
+               width="0.02" height="0.02" color="blue"
+               material="opacity: 0.5; transparent: true; side: double;"
+               robot-loader="model: kinova-gen3"
+               ik-worker={`${0}, ${0}, ${0}, ${deg90}, ${0}, ${deg90}, 0`}
+               reflect-worker-joints
+               base-mover
+               arm-motion-ui
+      />
       {/* <a-plane id="k3lit-kinova" */}
       {/*          position="-2.0 0.0 0.0" rotation="-90 0 90" */}
       {/*          width="0.04" height="0.04" color="blue" */}
@@ -137,29 +132,29 @@ function App() {
       {/* /> */}
     
       <a-plane id="sciurus17"
-               position="0.0 0.2 -0.5" rotation="-90 0 110"
-               base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
+               position="0.0 -0.2 -0.5" rotation="-90 0 110"
                width="0.4" height="0.4" color="red"
       >
-        <a-plane id="g1l-unitree-l-arm"
-                 position="0.0 -0.2 0.0" rotation="0 0 0"
+        <a-plane id="sciurus-l-arm"
+                 position="0.0 0.0 0.0" rotation="0 0 0"
                  width="0.1" height="0.1" color="green"
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17left"
-                 ik-worker={`0, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}`}
+                 ik-worker={`0, ${-deg22}, ${deg45}, ${-deg45}, ${-deg90}, ${0}, ${0}, ${0}, ${-deg22}`}
                  reflect-worker-joints
                  add-frame-to-joints="from: 0; to: 1"
                  attach-event-broadcaster
                  arm-motion-ui
+                 base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
         >
         </a-plane>
-        <a-plane id="g1r-unitree-r-arm"
+        <a-plane id="sciurus-r-arm"
                  position="0.0 0.2 0.0" rotation="0 0 0"
                  width="0.1" height="0.1" color="green"
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17right"
-                 attach-to-another="to: g1l-unitree-l-arm; axis: 1"
-                 ik-worker={`${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}`}
+                 attach-to-another="to: sciurus-l-arm; axis: 1"
+                 ik-worker={`${deg22}, ${-deg45}, ${deg45}, ${deg90}, ${0}, ${0}, ${0}, ${deg22}`}
                  reflect-worker-joints
                  attach-event-broadcaster
                  arm-motion-ui
@@ -168,75 +163,76 @@ function App() {
       </a-plane>
 
 
-      {/* <a-plane id="unitree-g1-torso" */}
-      {/*          position="1.0 0.2 -0.5" rotation="-90 0 110" */}
-      {/*          base-mover="velocityMax: 0.2; angularVelocityMax: 0.5" */}
-      {/*          width="0.4" height="0.4" color="red" */}
-      {/* > */}
-      {/*   <a-plane id="g1r-unitree-r-arm" */}
-      {/*            width="0.1" height="0.1" color="green" */}
-      {/*            material="opacity: 0.5; transparent: true; side: double;" */}
-      {/*            robot-loader="model: g1-right" */}
-      {/*            ik-worker={`${0}, ${0}, ${0}, ${0}, ${0}, 0, 0`} */}
-      {/*            reflect-worker-joints */}
-      {/*            attach-event-broadcaster */}
-      {/*            arm-motion-ui */}
-      {/*   > */}
-      {/*     <a-circle id="g1rt-unitree-r-thumb" */}
-      {/*               robot-loader="model: g1-right-thumb" */}
-      {/*               attach-to-another="to: g1r-unitree-r-arm" */}
-      {/*               finger-closer="stationaryJoints: 0; closeMax: -45" */}
-      {/*               radius="0.03" color="blue" */}
-      {/*               material="opacity: 0.5; transparent: true;" */}
-      {/*     /> */}
-      {/*     <a-circle id="g1ri-unitree-r-index" */}
-      {/*               robot-loader="model: g1-right-index" */}
-      {/*               attach-to-another="to: g1r-unitree-r-arm" */}
-      {/*               finger-closer */}
-      {/*               radius="0.03" color="blue" */}
-      {/*               material="opacity: 0.5; transparent: true;" */}
-      {/*     /> */}
-      {/*     <a-circle id="g1rm-unitree-r-middle" */}
-      {/*               robot-loader="model: g1-right-middle" */}
-      {/*               attach-to-another="to: g1r-unitree-r-arm" */}
-      {/*               finger-closer */}
-      {/*               radius="0.03" color="blue" */}
-      {/*               material="opacity: 0.5; transparent: true;" */}
-      {/*     /> */}
-      {/*   </a-plane> */}
+      <a-plane id="unitree-g1-torso"
+               position="1.0 0.2 -0.5" rotation="-90 0 110"
+               base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
+               width="0.4" height="0.4" color="red"
+      >
+        <a-plane id="g1r-unitree-r-arm"
+                 width="0.1" height="0.1" color="green"
+                 material="opacity: 0.5; transparent: true; side: double;"
+                 robot-loader="model: g1-right"
+                 ik-worker={`${0}, ${0}, ${0}, ${0}, ${0}, 0, 0`}
+                 reflect-worker-joints
+                 attach-event-broadcaster
+                 arm-motion-ui
+        >
+          <a-circle id="g1rt-unitree-r-thumb"
+                    robot-loader="model: g1-right-thumb"
+                    attach-to-another="to: g1r-unitree-r-arm"
+                    finger-closer="stationaryJoints: 0; closeMax: -45"
+                    radius="0.03" color="blue"
+                    material="opacity: 0.5; transparent: true;"
+          />
+          <a-circle id="g1ri-unitree-r-index"
+                    robot-loader="model: g1-right-index"
+                    attach-to-another="to: g1r-unitree-r-arm"
+                    finger-closer
+                    radius="0.03" color="blue"
+                    material="opacity: 0.5; transparent: true;"
+          />
+          <a-circle id="g1rm-unitree-r-middle"
+                    robot-loader="model: g1-right-middle"
+                    attach-to-another="to: g1r-unitree-r-arm"
+                    finger-closer
+                    radius="0.03" color="blue"
+                    material="opacity: 0.5; transparent: true;"
+          />
+        </a-plane>
 
-      {/*   <a-plane id="g1l-unitree-l-arm" */}
-      {/*            width="0.1" height="0.1" color="green" */}
-      {/*            material="opacity: 0.5; transparent: true; side: double;" */}
-      {/*            robot-loader="model: g1-left" */}
-      {/*            ik-worker={`${0}, ${0}, ${0}, ${0}, ${0}, 0, 0`} */}
-      {/*            reflect-worker-joints */}
-      {/*            attach-event-broadcaster */}
-      {/*            arm-motion-ui */}
-      {/*   > */}
-      {/*     <a-circle id="g1lt-unitree-l-thumb" */}
-      {/*               robot-loader="model: g1-left-thumb" */}
-      {/*               attach-to-another="to: g1l-unitree-l-arm" */}
-      {/*               finger-closer="stationaryJoints: 0; closeMax: 45" */}
-      {/*               radius="0.03" color="blue" */}
-      {/*               material="opacity: 0.5; transparent: true;" */}
-      {/*     /> */}
-      {/*     <a-circle id="g1li-unitree-l-index" */}
-      {/*               robot-loader="model: g1-left-index" */}
-      {/*               attach-to-another="to: g1l-unitree-l-arm" */}
-      {/*               finger-closer="closeMax: -45" */}
-      {/*               radius="0.03" color="blue" */}
-      {/*               material="opacity: 0.5; transparent: true;" */}
-      {/*     /> */}
-      {/*     <a-circle id="g1lm-unitree-l-middle" */}
-      {/*               robot-loader="model: g1-left-middle" */}
-      {/*               attach-to-another="to: g1l-unitree-l-arm" */}
-      {/*               finger-closer="closeMax: -45" */}
-      {/*               radius="0.03" color="blue" */}
-      {/*               material="opacity: 0.5; transparent: true;" */}
-      {/*     /> */}
-      {/*   </a-plane> */}
-      {/* </a-plane> */}
+        <a-plane id="g1l-unitree-l-arm"
+                 width="0.1" height="0.1" color="green"
+                 material="opacity: 0.5; transparent: true; side: double;"
+                 robot-loader="model: g1-left"
+                 ik-worker={`${0}, ${0}, ${0}, ${0}, ${0}, 0, 0`}
+                 reflect-worker-joints
+                 attach-event-broadcaster
+                 arm-motion-ui
+        >
+          <a-circle id="g1lt-unitree-l-thumb"
+                    robot-loader="model: g1-left-thumb"
+                    attach-to-another="to: g1l-unitree-l-arm"
+                    finger-closer="stationaryJoints: 0; closeMax: 45"
+                    radius="0.03" color="blue"
+                    material="opacity: 0.5; transparent: true;"
+          />
+          <a-circle id="g1li-unitree-l-index"
+                    robot-loader="model: g1-left-index"
+                    attach-to-another="to: g1l-unitree-l-arm"
+                    finger-closer="closeMax: -45"
+                    radius="0.03" color="blue"
+                    material="opacity: 0.5; transparent: true;"
+          />
+          <a-circle id="g1lm-unitree-l-middle"
+                    robot-loader="model: g1-left-middle"
+                    attach-to-another="to: g1l-unitree-l-arm"
+                    finger-closer="closeMax: -45"
+                    radius="0.03" color="blue"
+                    material="opacity: 0.5; transparent: true;"
+          />
+        </a-plane>
+      </a-plane>
+
       {/* <a-sky color="#ECECEC"></a-sky> */}
     </a-scene>
   );
