@@ -141,7 +141,7 @@ const rigidBodyArray = [
   //
   { name: 'hand1',
     type: 'kinematicPosition',
-    position: {x: (1.0)*mag, y: (2.0)*mag, z: (-3.0)*mag},	
+    position: {x: (6.0)*mag, y: (2.0)*mag, z: (-3.0)*mag},	
     orientation: {w: 0.991445, x:0.0, y:0.0, z:0.130526},
     collider: [
       { shape: 'box',
@@ -175,7 +175,7 @@ const rigidBodyArray = [
     ]
   },
   { name: 'hand2',
-    position: {x: (1.0)*mag, y: (4.0)*mag, z: (-3.0)*mag},
+    position: {x: (6.0)*mag, y: (4.0)*mag, z: (-3.0)*mag},
     orientation: {w: 0.991445, x:0.0, y:0.0, z:-0.130526},
     collider: { shape: 'box',
 		size: {x: redFingerWidth,
@@ -186,7 +186,7 @@ const rigidBodyArray = [
 	      },
   },
   { name: 'hand3',
-    position: {x: (1.0)*mag, y: (3.5)*mag, z: (-3.0)*mag},
+    position: {x: (6.0)*mag, y: (3.5)*mag, z: (-3.0)*mag},
     orientation: {w: 0.991445, x:0.0, y:0.0, z:-0.130526},
     collider: { shape: 'box',
 		size: {x: redFingerWidth,
@@ -199,7 +199,7 @@ const rigidBodyArray = [
   },
   //
   { name: 'end1',
-    position: {x: (0.0)*mag, y: (3.5)*mag, z: (-3.0)*mag},
+    position: {x: (2.0)*mag, y: (3.5)*mag, z: (-3.0-4)*mag},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
     collider: { shape: 'box',
 		size: {x: (0.4)*mag, y: (0.6)*mag, z: (0.2)*mag},
@@ -208,7 +208,7 @@ const rigidBodyArray = [
 	      },
   },
   { name: 'end2',
-    position: {x: (0.0)*mag, y: (3.5-0.6)*mag, z: (-3.0+0.6+0.2)*mag},
+    position: {x: (2.0)*mag, y: (3.5-0.6)*mag, z: (-3.0+0.6+0.2-4)*mag},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
     collider: { shape: 'box',
 		size: {x: (0.25)*mag, y: (0.05)*mag, z: (0.6)*mag},
@@ -216,7 +216,7 @@ const rigidBodyArray = [
 	      },
   },
   { name: 'end3',
-    position: {x: (0.0)*mag, y: (3.5+0.6)*mag, z: (-3.0+0.6+0.2)*mag},
+    position: {x: (2.0)*mag, y: (3.5+0.6)*mag, z: (-3.0+0.6+0.2-4)*mag},
     orientation: {w: 1.0, x:0.0, y:0.0, z:0.0},
     collider: { shape: 'box',
 		size: {x: (0.25)*mag, y: (0.05)*mag, z: (0.6)*mag},

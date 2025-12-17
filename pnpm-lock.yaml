@@ -10,15 +10,39 @@ importers:
 
   packages/Playground:
     dependencies:
+      '@ucl-nuee/g1-left':
+        specifier: workspace:*
+        version: link:../robot-assets/g1-left
+      '@ucl-nuee/g1-right':
+        specifier: workspace:*
+        version: link:../robot-assets/g1-right
       '@ucl-nuee/ik-cd-worker':
         specifier: workspace:*
         version: link:../ik-cd-worker
+      '@ucl-nuee/jaka-zu5':
+        specifier: workspace:*
+        version: link:../robot-assets/jaka-zu5
+      '@ucl-nuee/kinova-gen3':
+        specifier: workspace:*
+        version: link:../robot-assets/kinova-gen3
+      '@ucl-nuee/kinova-gen3-lite':
+        specifier: workspace:*
+        version: link:../robot-assets/kinova-gen3-lite
+      '@ucl-nuee/nova2':
+        specifier: workspace:*
+        version: link:../robot-assets/nova2
       '@ucl-nuee/rapier-worker':
         specifier: workspace:*
         version: link:../rapier-worker
       '@ucl-nuee/robot-loader':
         specifier: workspace:*
         version: link:../robot-loader
+      '@ucl-nuee/sciurus17left':
+        specifier: workspace:*
+        version: link:../robot-assets/sciurus17left
+      '@ucl-nuee/sciurus17right':
+        specifier: workspace:*
+        version: link:../robot-assets/sciurus17right
       '@ucl-nuee/ur5e':
         specifier: workspace:*
         version: link:../robot-assets/ur5e
@@ -159,6 +183,10 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2
 
+  packages/robot-assets/g1-left: {}
+
+  packages/robot-assets/g1-right: {}
+
   packages/robot-assets/jaka-zu5:
     dependencies:
       '@ucl-nuee/robot-loader':
@@ -202,7 +230,15 @@ importers:
         specifier: ^7.1.7
         version: 7.2.7(@types/node@25.0.2)
 
+  packages/robot-assets/kinova-gen3: {}
+
+  packages/robot-assets/kinova-gen3-lite: {}
+
   packages/robot-assets/nova2: {}
+
+  packages/robot-assets/sciurus17left: {}
+
+  packages/robot-assets/sciurus17right: {}
 
   packages/robot-assets/ur5e: {}
 

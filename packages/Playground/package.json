@@ -13,6 +13,15 @@
   },
   "dependencies": {
     "@ucl-nuee/ur5e": "workspace:*",
+    "@ucl-nuee/jaka-zu5": "workspace:*",
+    "@ucl-nuee/nova2": "workspace:*",
+    "@ucl-nuee/sciurus17left": "workspace:*",
+    "@ucl-nuee/sciurus17right": "workspace:*",
+    "@ucl-nuee/kinova-gen3": "workspace:*",
+    "@ucl-nuee/kinova-gen3-lite": "workspace:*",
+    "@ucl-nuee/g1-right": "workspace:*",
+    "@ucl-nuee/g1-left": "workspace:*",
+
     "@ucl-nuee/robot-loader": "workspace:*",
     "@ucl-nuee/ik-cd-worker": "workspace:*",
     "@ucl-nuee/rapier-worker": "workspace:*",

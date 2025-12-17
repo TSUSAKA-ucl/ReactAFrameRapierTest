@@ -1,7 +1,13 @@
 packages:
   - packages/*
-  - packages/robot-assets/ur5e
-  - packages/robot-assets/nova2
+  - packages/robot-assets/g1-left
+  - packages/robot-assets/g1-right
   - packages/robot-assets/jaka-zu5
+  - packages/robot-assets/kinova-gen3
+  - packages/robot-assets/kinova-gen3-lite
+  - packages/robot-assets/nova2
+  - packages/robot-assets/sciurus17left
+  - packages/robot-assets/sciurus17right
+  - packages/robot-assets/ur5e
 ignoredBuiltDependencies:
   - esbuild
