@@ -9,12 +9,12 @@ import './rapierRigidbodyAttach.js';
 import './rapierFuncController.js';
 import './rapierGripperSucker.js';
 import '@ucl-nuee/robot-loader/robotLoader.js';
-import '@ucl-nuee/robot-loader/ikWorker.js';
+import '@ucl-nuee/ik-cd-worker/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
 import '@ucl-nuee/robot-loader/armMotionUI.js';
 import '@ucl-nuee/robot-loader/baseMover.js';
 // import './eventForwarder.js';
-import './attachToAnother.js';
+import '@ucl-nuee/robot-loader/attachToAnother.js';
 import './jakaHandPoseRapier.js';
 import './addFrameToJoints.js';
 import './fingerCloser.js';
@@ -148,6 +148,7 @@ function App() {
                  robot-loader="model: sciurus17left"
                  ik-worker={`0, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}, ${deg22}`}
                  reflect-worker-joints
+                 add-frame-to-joints="from: 0; to: 1"
                  attach-event-broadcaster
                  arm-motion-ui
         >

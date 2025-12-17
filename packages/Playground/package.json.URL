@@ -1,0 +1,56 @@
+{
+  "name": "@ucl-nuee/react-aframe-rapier-test",
+  "version": "1.1.2",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "depgraph": "npx depcruise src/main.jsx --exclude '^node_modules/\\.pnpm' --output-type dot | dot -Tsvg > graph.svg"
+  },
+  "dependencies": {
+    "@ucl-nuee/g1-left": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-left-1.0.1.tgz",
+    "@ucl-nuee/g1-right": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-g1-right-1.0.1.tgz",
+    "@ucl-nuee/ik-cd-worker": "https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.11.tgz",
+    "@ucl-nuee/jaka-zu5": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-jaka-zu5-1.0.6.tgz",
+    "@ucl-nuee/nova2": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-nova2-1.0.2.tgz",
+    "@ucl-nuee/ur5e": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-ur5e-1.0.1.tgz",
+    "@ucl-nuee/kinova-gen3": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-kinova-gen3-1.0.0.tgz",
+    "@ucl-nuee/kinova-gen3-lite": "https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.1.0/ucl-nuee-kinova-gen3-lite-1.0.0.tgz",
+    "@ucl-nuee/rapier-worker": "https://github.com/TSUSAKA-ucl/AFrameRapierWorker/releases/download/ver.0.2/ucl-nuee-rapier-worker-0.2.6.tgz",
+    "@ucl-nuee/robot-loader": "https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.8.tgz",
+    "aframe": "^1.7.1",
+    "eslint-plugin-react": "^7.37.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "dependency-cruiser": "^17.0.2",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "vite": "^7.1.2",
+    "vite-plugin-static-copy": "^3.1.2"
+  },
+  "exports": {
+    "./armMotionUI.js": "src/armMotionUI.js",
+    "./axesFrame.js": "src/axesFrame.js",
+    "./ikWorker.js": "src/ikWorker.js",
+    "./reflectWorkerJoints.js": "src/reflectWorkerJoints.js",
+    "./robotLoader.js": "src/robotLoader.js",
+    "./robotRegistry.js": "src/robotRegistry.js",
+    "./vrControllerThumbMenu.js": "src/vrControllerThumbMenu.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.1"
+}

@@ -1,0 +1,7 @@
+packages:
+  - packages/*
+  - packages/robot-assets/ur5e
+  - packages/robot-assets/nova2
+  - packages/robot-assets/jaka-zu5
+ignoredBuiltDependencies:
+  - esbuild
