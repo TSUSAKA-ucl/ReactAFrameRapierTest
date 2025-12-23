@@ -141,6 +141,7 @@ function App() {
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17left"
                  ik-worker={`0, ${-deg22}, ${deg45}, ${-deg45}, ${-deg90}, ${0}, ${0}, ${0}, ${-deg22}`}
+                 joint-weight="override: 0:0.004"
                  reflect-worker-joints
                  add-frame-to-joints="from: 0; to: 1"
                  attach-event-broadcaster

@@ -16,16 +16,22 @@ AFRAME.registerComponent('change-opacity', {
 
   updateOpacity: function (opacity) {
     if (opacity > 1.0) return; // 何もしない
-    const obj = this.el.getObject3D('mesh');
-    if (!obj) return;
-
-    obj.traverse((node) => {
-      if (node.isMesh && node.material) {
-        node.material.transparent = opacity < 1.0; // 透明度必要
-        node.material.opacity = opacity;
-        node.material.needsUpdate = true;
-      }
-    });
+    const onLoaded = () => {
+      const obj = this.el.getObject3D('mesh');
+      if (!obj) return;
+      obj.traverse((node) => {
+	if (node.isMesh && node.material) {
+          node.material.transparent = opacity < 1.0; // 透明度必要
+          node.material.opacity = opacity;
+          node.material.needsUpdate = true;
+	}
+      });
+    };
+    if (this.el.getObject3D('mesh')) {
+      onLoaded();
+    } else {
+      this.el.addEventListener('model-loaded', onLoaded);
+    }
   }
 });
 
@@ -87,15 +93,21 @@ AFRAME.registerComponent('change-color', {
     this.updateColor(this.data.color);
   },
   updateColor: function (color) {
-    const obj = this.el.getObject3D('mesh');
-    if (!obj) return;
-
-    obj.traverse((node) => {
-      if (node.isMesh && node.material) {
-	node.material.color = new THREE.Color(color);
-	node.material.needsUpdate = true;
-      }
-    });
+    const onLoaded = () => {
+      const obj = this.el.getObject3D('mesh');
+      if (!obj) return;
+      obj.traverse((node) => {
+	if (node.isMesh && node.material) {
+	  node.material.color = new THREE.Color(color);
+	  node.material.needsUpdate = true;
+	}
+      });
+    };
+    if (this.el.getObject3D('mesh')) {
+      onLoaded();
+    } else {
+      this.el.addEventListener('model-loaded', onLoaded);
+    }
   }
 });
 
