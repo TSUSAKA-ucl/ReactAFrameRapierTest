@@ -205,7 +205,8 @@ function App() {
                  width="0.1" height="0.1" color="green"
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: g1-left"
-                 ik-worker={`${0}, ${0}, ${0}, ${0}, ${0}, 0, 0`}
+                 ik-worker={`${-deg22}, ${deg45}, ${0}, ${0}, ${0}, 0, 0`}
+                 joint-desirable={`gain: 0:1, 1:1; upper: 0:${-deg22}; lower 1:${deg45}`}
                  reflect-worker-joints
                  attach-event-broadcaster
                  arm-motion-ui
