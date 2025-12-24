@@ -140,8 +140,8 @@ function App() {
                  width="0.1" height="0.1" color="green"
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17left"
-                 ik-worker={`0, ${-deg22}, ${deg45}, ${-deg45}, ${-deg90}, ${0}, ${0}, ${0}, ${-deg22}`}
-                 joint-weight="override: 0:0.004"
+                 ik-worker={`0, ${-deg22}, ${deg45}, ${-deg45}, ${-deg90}, ${0}, ${0}, ${0}, ${-deg67}`}
+                 joint-weight="override: 0:0.001"
                  reflect-worker-joints
                  add-frame-to-joints="from: 0; to: 1"
                  attach-event-broadcaster
@@ -155,7 +155,8 @@ function App() {
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17right"
                  attach-to-another="to: sciurus-l-arm; axis: 1"
-                 ik-worker={`${deg22}, ${-deg45}, ${deg45}, ${deg90}, ${0}, ${0}, ${0}, ${deg22}`}
+                 ik-worker={`${deg22}, ${-deg45}, ${deg45}, ${deg90}, ${0}, ${0}, ${0}, ${deg67}`}
+                 joint-desirable={`gain: 0:21,1:21; upper: 0:${deg22},1:${-deg22}; lower: 0:${deg22},1:${-deg22};`}
                  reflect-worker-joints
                  attach-event-broadcaster
                  arm-motion-ui
@@ -206,7 +207,7 @@ function App() {
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: g1-left"
                  ik-worker={`${-deg22}, ${deg45}, ${0}, ${0}, ${0}, 0, 0`}
-                 joint-desirable={`gain: 0:1, 1:1; upper: 0:${-deg22}; lower 1:${deg45}`}
+                 joint-desirable="gain: 0:200,1:200; upper: 0:-0.382,1:0.785; lower: 0:-0.382,1:0.785;"
                  reflect-worker-joints
                  attach-event-broadcaster
                  arm-motion-ui
