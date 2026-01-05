@@ -9,7 +9,7 @@ import './rapierRigidbodyAttach.js';
 import './rapierFuncController.js';
 import './rapierGripperSucker.js';
 import '@ucl-nuee/robot-loader/robotLoader.js';
-import '@ucl-nuee/ik-cd-worker/ikWorker.js';
+import '@ucl-nuee/robot-loader/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
 import '@ucl-nuee/robot-loader/armMotionUI.js';
 import '@ucl-nuee/robot-loader/baseMover.js';
@@ -141,7 +141,7 @@ function App() {
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17left"
                  ik-worker={`0, ${-deg22}, ${deg45}, ${-deg45}, ${-deg90}, ${0}, ${0}, ${0}, ${-deg67}`}
-                 joint-weight="override: 0:0.001"
+                 joint-weight="override: 0:0.0064"
                  reflect-worker-joints
                  add-frame-to-joints="from: 0; to: 1"
                  attach-event-broadcaster

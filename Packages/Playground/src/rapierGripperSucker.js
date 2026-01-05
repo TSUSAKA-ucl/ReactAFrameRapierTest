@@ -21,7 +21,7 @@ AFRAME.registerComponent('rapier-open-close-gripper', {
       handSpeed[1] = 0.5;
     }
     // JAKA or RedBlock gripper
-    this.el.addEventListener('abuttondown', (evt) => { // CLOSE
+    const closer = (evt) => { // CLOSE
       const args = {};
       handArgs.forEach(v=>args[v]= handSpeed[0]);
       globalWorkerRef?.current?.postMessage({
@@ -29,8 +29,8 @@ AFRAME.registerComponent('rapier-open-close-gripper', {
         name: 'mapVeloc',
 	args: args
       })
-    });
-    this.el.addEventListener('bbuttondown', (evt) => { // OPEN
+    };
+    const opener = (evt) => { // OPEN
       const args = {};
       handArgs.forEach(v=>args[v]= handSpeed[1]);
       globalWorkerRef?.current?.postMessage({
@@ -38,7 +38,11 @@ AFRAME.registerComponent('rapier-open-close-gripper', {
         name: 'mapVeloc',
 	args: args
       })
-    });
+    };
+    this.el.addEventListener('abuttondown', closer);
+    this.el.addEventListener('xbuttondown', closer);
+    this.el.addEventListener('bbuttondown', opener);
+    this.el.addEventListener('ybuttondown', opener);
   },
 });
 AFRAME.registerComponent('rapier-fix-by-sucker', {

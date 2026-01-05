@@ -1,12 +1,12 @@
 [submodule "packages/robot-loader"]
-	path = packages/robot-loader
+	path = Packages/robot-loader
 	url = https://github.com/TSUSAKA-ucl/robot-loader.git
 [submodule "packages/ik-cd-worker"]
-	path = packages/ik-cd-worker
+	path = Packages/ik-cd-worker
 	url = https://github.com/TSUSAKA-ucl/ik-cd-worker.git
 [submodule "packages/rapier-worker"]
-	path = packages/rapier-worker
+	path = Packages/rapier-worker
 	url = https://github.com/TSUSAKA-ucl/AFrameRapierWorker.git
 [submodule "packages/robot-assets"]
-	path = packages/robot-assets
+	path = Packages/robot-assets
 	url = https://github.com/TSUSAKA-ucl/robot-assets.git
