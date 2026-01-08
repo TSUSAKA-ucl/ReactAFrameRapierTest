@@ -18,6 +18,7 @@ import './jakaHandPoseRapier.js';
 import './addFrameToJoints.js';
 import './fingerCloser.js';
 import './VerticalControls.js';
+import './ChangeOpacity.js';
 
 // ****************
 // the entry point
@@ -85,6 +86,7 @@ function App() {
                rapier-jaka-hand-width="rapeirHandL: jakaHandL; rapeirHandR: jakaHandR; aframeHandL: jaka-hand1-a; aframeHandR: jaka-hand1-b"
                /* event-forwarder="destination: jaka-hand1-a; events: robot-registered" */
                /* event-forwarder="destination: jaka-hand1-b; events: robot-registered" */
+               attach-color-recursively="color: red"
       />
       <a-plane id="nova2-plane"
                position="-1.0 0.0 -1.0" rotation="-90 0 90"
@@ -147,6 +149,7 @@ function App() {
                  attach-event-broadcaster
                  arm-motion-ui
                  base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
+                 attach-opacity-recursively="opacity: 0.1"
         >
         </a-plane>
         <a-plane id="sciurus-r-arm"
@@ -160,6 +163,7 @@ function App() {
                  reflect-worker-joints
                  attach-event-broadcaster
                  arm-motion-ui
+                 attach-color-recursively="color: blue"
         >
         </a-plane>
       </a-plane>

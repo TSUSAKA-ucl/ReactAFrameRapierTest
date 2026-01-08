@@ -98,7 +98,7 @@ AFRAME.registerComponent('change-color', {
       if (!obj) return;
       obj.traverse((node) => {
 	if (node.isMesh && node.material) {
-	  node.material.color = new THREE.Color(color);
+	  node.material.color.set(color); //  = new THREE.Color(color);
 	  node.material.needsUpdate = true;
 	}
       });
