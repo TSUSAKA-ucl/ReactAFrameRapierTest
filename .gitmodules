@@ -10,3 +10,7 @@
 [submodule "packages/robot-assets"]
 	path = Packages/robot-assets
 	url = https://github.com/TSUSAKA-ucl/robot-assets.git
+[submodule "Packages/sciurus17-nextjs-exmaple"]
+	path = Packages/sciurus17-nextjs-exmaple
+	url = https://github.com/TSUSAKA-ucl/sciurus17-nextjs-exmaple.git
+	branch = dev

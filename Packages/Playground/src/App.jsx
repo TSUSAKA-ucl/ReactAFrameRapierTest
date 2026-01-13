@@ -11,14 +11,16 @@ import './rapierGripperSucker.js';
 import '@ucl-nuee/robot-loader/robotLoader.js';
 import '@ucl-nuee/robot-loader/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
+import '@ucl-nuee/robot-loader/reflectCollision.js';
 import '@ucl-nuee/robot-loader/armMotionUI.js';
 import '@ucl-nuee/robot-loader/baseMover.js';
 import '@ucl-nuee/robot-loader/attachToAnother.js';
+import '@ucl-nuee/robot-loader/ChangeOpacity.js';
 import './jakaHandPoseRapier.js';
 import './addFrameToJoints.js';
 import './fingerCloser.js';
 import './VerticalControls.js';
-import './ChangeOpacity.js';
+import './ChangeColorEvery3sec.js';
 
 // ****************
 // the entry point
@@ -86,7 +88,8 @@ function App() {
                rapier-jaka-hand-width="rapeirHandL: jakaHandL; rapeirHandR: jakaHandR; aframeHandL: jaka-hand1-a; aframeHandR: jaka-hand1-b"
                /* event-forwarder="destination: jaka-hand1-a; events: robot-registered" */
                /* event-forwarder="destination: jaka-hand1-b; events: robot-registered" */
-               attach-color-recursively="color: red"
+               change-color-every-3sec="colorList: red, original, blue, original, orange, original; interval: 5000"
+               /* attach-color-recursively="color: red" */
       />
       <a-plane id="nova2-plane"
                position="-1.0 0.0 -1.0" rotation="-90 0 90"
@@ -180,6 +183,7 @@ function App() {
                  robot-loader="model: g1-right"
                  ik-worker={`${0}, ${0}, ${0}, ${0}, ${0}, 0, 0`}
                  reflect-worker-joints
+                 reflect-collision="color: yellow"
                  attach-event-broadcaster
                  arm-motion-ui
         >
