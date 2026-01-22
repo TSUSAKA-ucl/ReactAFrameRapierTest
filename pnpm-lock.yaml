@@ -115,55 +115,6 @@ importers:
         specifier: ^7.1.2
         version: 7.2.7(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)
 
-  Packages/next-js-sample:
-    dependencies:
-      '@ucl-nuee/ik-cd-worker':
-        specifier: workspace:*
-        version: link:../ik-cd-worker
-      '@ucl-nuee/robot-loader':
-        specifier: workspace:*
-        version: link:../robot-loader
-      '@ucl-nuee/ur5e':
-        specifier: workspace:*
-        version: link:../robot-assets/ur5e
-      aframe:
-        specifier: ^1.7.1
-        version: 1.7.1
-      next:
-        specifier: 16.1.1
-        version: 16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      react:
-        specifier: 19.2.3
-        version: 19.2.3
-      react-dom:
-        specifier: 19.2.3
-        version: 19.2.3(react@19.2.3)
-    devDependencies:
-      '@tailwindcss/postcss':
-        specifier: ^4
-        version: 4.1.18
-      '@types/node':
-        specifier: ^20
-        version: 20.5.6
-      '@types/react':
-        specifier: ^19
-        version: 19.2.7
-      '@types/react-dom':
-        specifier: ^19
-        version: 19.2.3(@types/react@19.2.7)
-      eslint:
-        specifier: ^9
-        version: 9.39.2(jiti@2.6.1)
-      eslint-config-next:
-        specifier: 16.1.1
-        version: 16.1.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      tailwindcss:
-        specifier: ^4
-        version: 4.1.18
-      typescript:
-        specifier: ^5
-        version: 5.9.3
-
   Packages/rapier-worker:
     dependencies:
       aframe:
@@ -348,24 +299,24 @@ importers:
 
   Packages/sciurus17-nextjs-exmaple:
     dependencies:
+      '@ucl-nuee/a0509':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@ucl-nuee/ik-cd-worker':
         specifier: workspace:*
         version: link:../ik-cd-worker
       '@ucl-nuee/robot-loader':
         specifier: workspace:*
         version: link:../robot-loader
-      '@ucl-nuee/sciurus17left':
-        specifier: workspace:*
-        version: link:../robot-assets/sciurus17left
-      '@ucl-nuee/sciurus17right':
-        specifier: workspace:*
-        version: link:../robot-assets/sciurus17right
+      '@ucl-nuee/sciurus17':
+        specifier: ^1.1.1
+        version: 1.1.1
       aframe:
         specifier: ^1.7.1
         version: 1.7.1
       next:
         specifier: 16.1.1
-        version: 16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -391,6 +342,61 @@ importers:
       eslint-config-next:
         specifier: 16.1.1
         version: 16.1.1(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      tailwindcss:
+        specifier: ^4
+        version: 4.1.18
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
+  Packages/unitree-g1-nextjs-exmaple:
+    dependencies:
+      '@ucl-nuee/g1-left':
+        specifier: workspace:*
+        version: link:../robot-assets/g1-left
+      '@ucl-nuee/g1-right':
+        specifier: workspace:*
+        version: link:../robot-assets/g1-right
+      '@ucl-nuee/ik-cd-worker':
+        specifier: workspace:*
+        version: link:../ik-cd-worker
+      '@ucl-nuee/robot-loader':
+        specifier: workspace:*
+        version: link:../robot-loader
+      '@ucl-nuee/ur5e':
+        specifier: workspace:*
+        version: link:../robot-assets/ur5e
+      aframe:
+        specifier: ^1.7.1
+        version: 1.7.1
+      next:
+        specifier: 16.1.1
+        version: 16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react:
+        specifier: 19.2.3
+        version: 19.2.3
+      react-dom:
+        specifier: 19.2.3
+        version: 19.2.3(react@19.2.3)
+    devDependencies:
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.1.18
+      '@types/node':
+        specifier: ^20
+        version: 20.5.6
+      '@types/react':
+        specifier: ^19
+        version: 19.2.7
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.2.3(@types/react@19.2.7)
+      eslint:
+        specifier: ^9
+        version: 9.39.2(jiti@2.6.1)
+      eslint-config-next:
+        specifier: 16.1.1
+        version: 16.1.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       tailwindcss:
         specifier: ^4
         version: 4.1.18
@@ -1463,6 +1469,9 @@ packages:
     resolution: {integrity: sha512-ink3/Zofus34nmBsPjow63FP5M7IGff0RKAgqR6+CFpdk22M7aLwC9gOcLGYqr7MczLPzZVERW9hRog3O4n1sQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@ucl-nuee/a0509@1.0.1':
+    resolution: {integrity: sha512-78mQ2zkJvw3hapfQO6HjYummgX5lZPWA7wnyrUrmAPFJdDMs43+fF+y3jE52nXcfHBTBxToKH1DR8kpOI1d/wg==, tarball: https://npm.pkg.github.com/download/@ucl-nuee/a0509/1.0.1/4f7ae6ad8f1e8ecb1b2be1cfde2413a72d0f5eb9}
+
   '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz':
     resolution: {tarball: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz}
     version: 0.2.4
@@ -1484,6 +1493,9 @@ packages:
   '@ucl-nuee/robot-loader@https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.4.tgz':
     resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.4.tgz}
     version: 1.0.4
+
+  '@ucl-nuee/sciurus17@1.1.1':
+    resolution: {integrity: sha512-fYK6sPaazGAm2Nk6f9ryGnVmNJld3fMR24glFKEHbbjqrBzauW1HtN72w+Ubo0aLU8X69mxWj8jNY64k7gPyoQ==, tarball: https://npm.pkg.github.com/download/@ucl-nuee/sciurus17/1.1.1/f81fe240a1af4a506db7108913df8604a41d52db}
 
   '@unrs/resolver-binding-android-arm-eabi@1.11.1':
     resolution: {integrity: sha512-ppLRUgHVaGRWUx0R0Ut06Mjo9gBaBkg3v/8AxusGLhsIotbBLuRk51rAzqLC8gq6NyyAojEXglNjzf6R948DNw==}
@@ -5111,6 +5123,8 @@ snapshots:
       '@typescript-eslint/types': 8.52.0
       eslint-visitor-keys: 4.2.1
 
+  '@ucl-nuee/a0509@1.0.1': {}
+
   '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz(@msgpack/msgpack@3.1.2)(aframe@1.7.1)':
     dependencies:
       '@msgpack/msgpack': 3.1.2
@@ -5135,6 +5149,8 @@ snapshots:
       - eslint
       - supports-color
       - typescript
+
+  '@ucl-nuee/sciurus17@1.1.1': {}
 
   '@unrs/resolver-binding-android-arm-eabi@1.11.1':
     optional: true
@@ -5977,7 +5993,7 @@ snapshots:
       eslint: 9.39.2(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@2.6.1))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-react: 7.37.5(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-react-hooks: 7.0.1(eslint@9.39.2(jiti@2.6.1))
@@ -6030,7 +6046,7 @@ snapshots:
       tinyglobby: 0.2.15
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@2.6.1))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -6070,7 +6086,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9
@@ -7059,7 +7075,7 @@ snapshots:
 
   new-array@1.0.0: {}
 
-  next@16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next@16.1.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@next/env': 16.1.1
       '@swc/helpers': 0.5.15
@@ -7068,7 +7084,7 @@ snapshots:
       postcss: 8.4.31
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
-      styled-jsx: 5.1.6(@babel/core@7.28.5)(react@19.2.3)
+      styled-jsx: 5.1.6(react@19.2.3)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.1.1
       '@next/swc-darwin-x64': 16.1.1
@@ -7790,12 +7806,10 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  styled-jsx@5.1.6(@babel/core@7.28.5)(react@19.2.3):
+  styled-jsx@5.1.6(react@19.2.3):
     dependencies:
       client-only: 0.0.1
       react: 19.2.3
-    optionalDependencies:
-      '@babel/core': 7.28.5
 
   stylus-lookup@6.1.0:
     dependencies:

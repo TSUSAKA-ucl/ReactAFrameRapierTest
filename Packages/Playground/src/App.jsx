@@ -12,13 +12,14 @@ import '@ucl-nuee/robot-loader/robotLoader.js';
 import '@ucl-nuee/robot-loader/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
 import '@ucl-nuee/robot-loader/reflectCollision.js';
+import '@ucl-nuee/robot-loader/reflectJointLimits.js';
 import '@ucl-nuee/robot-loader/armMotionUI.js';
 import '@ucl-nuee/robot-loader/baseMover.js';
 import '@ucl-nuee/robot-loader/attachToAnother.js';
 import '@ucl-nuee/robot-loader/ChangeOpacity.js';
 import './jakaHandPoseRapier.js';
 import './addFrameToJoints.js';
-import './fingerCloser.js';
+import '@ucl-nuee/robot-loader/fingerCloser.js';
 import './VerticalControls.js';
 import './ChangeColorEvery3sec.js';
 
@@ -28,9 +29,11 @@ import './ChangeColorEvery3sec.js';
 function App() {
   const deg30 = Math.PI / 6.0;
   const deg90 = Math.PI/2;
+  const deg80 = 80.0/180*Math.PI;
   const deg67 = Math.PI*3/8;
   const deg45 = Math.PI/4;
   const deg22 = Math.PI/8;
+  const deg10 = 10.0/180*Math.PI;
   return (
     <a-scene xr-mode-ui="XRMode: xr"
 	     keyboard-shortcuts="enterVR: false"
@@ -96,8 +99,14 @@ function App() {
                width="0.02" height="0.02" color="beige"
                material="opacity: 0.15; transparent: true; side: double;"
                robot-loader="model: nova2_robot"
+               /* attach-color-recursively="color: azure" */
+               change-original-color-recursively="color: azure"
                ik-worker={`${deg90}, ${-deg90}, ${deg90}, 0, ${-deg90}, 0`}
                reflect-worker-joints
+               reflect-collision="color: yellow"
+               reflect-joint-limits
+               joint-desirable={`gain: 2:10; upper: 2:${deg80}; lower: 2:${deg10};`}
+               joint-desirable-vlimit="all: 0.5"
                arm-motion-ui
                rapier-rigidbody-attach="rigidBody: nova2SuckerBase; position: 0 0 0.17; quaternion: 0.707107 0 0 0.707107"
                rapier-func-controller
@@ -129,9 +138,10 @@ function App() {
                width="0.04" height="0.04" color="blue"
                material="opacity: 0.5; transparent: true; side: double;"
                robot-loader="model: ur5e"
-               add-frame-to-joints="from: 3; to: 3; length: 0.4"
+               add-frame-to-joints="from: 3; to: 3; length: 0.2"
                ik-worker={`0, ${-deg90}, ${deg90}, 0, ${deg90}, 0`}
                reflect-worker-joints
+               reflect-collision="color: orange"
                arm-motion-ui
                base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
       />
@@ -217,27 +227,28 @@ function App() {
                  ik-worker={`${-deg22}, ${deg45}, ${0}, ${0}, ${0}, 0, 0`}
                  joint-desirable="gain: 0:200,1:200; upper: 0:-0.382,1:0.785; lower: 0:-0.382,1:0.785;"
                  reflect-worker-joints
+                 reflect-collision="color: yellow"
                  attach-event-broadcaster
                  arm-motion-ui
         >
           <a-circle id="g1lt-unitree-l-thumb"
                     robot-loader="model: g1-left-thumb"
                     attach-to-another="to: g1l-unitree-l-arm"
-                    finger-closer="stationaryJoints: 0; closeMax: 45"
+                    finger-closer="stationaryJoints: 0; closeMax: 45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
           />
           <a-circle id="g1li-unitree-l-index"
                     robot-loader="model: g1-left-index"
                     attach-to-another="to: g1l-unitree-l-arm"
-                    finger-closer="closeMax: -45"
+                    finger-closer="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
           />
           <a-circle id="g1lm-unitree-l-middle"
                     robot-loader="model: g1-left-middle"
                     attach-to-another="to: g1l-unitree-l-arm"
-                    finger-closer="closeMax: -45"
+                    finger-closer="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
           />
