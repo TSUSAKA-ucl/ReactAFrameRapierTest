@@ -23,6 +23,17 @@ import '@ucl-nuee/robot-loader/fingerCloser.js';
 import './VerticalControls.js';
 import './ChangeColorEvery3sec.js';
 
+function toSchema (obj, separator='; ') {
+  if (typeof obj !== 'object' || obj === null) {
+    return String(obj);
+  }
+  if (Array.isArray(obj)) {
+    return obj.map((v) => toSchema(v, ',')).join(', ');
+  }
+  return Object.entries(obj)
+    .map(([key, value]) => `${key}: `+toSchema(value,','))
+    .join(separator);
+};
 // ****************
 // the entry point
 // :
@@ -89,9 +100,7 @@ function App() {
                rapier-func-controller
                rapier-open-close-gripper
                rapier-jaka-hand-width="rapeirHandL: jakaHandL; rapeirHandR: jakaHandR; aframeHandL: jaka-hand1-a; aframeHandR: jaka-hand1-b"
-               /* event-forwarder="destination: jaka-hand1-a; events: robot-registered" */
-               /* event-forwarder="destination: jaka-hand1-b; events: robot-registered" */
-               change-color-every-3sec="colorList: red, original, blue, original, orange, original; interval: 5000"
+               /* change-color-every-3sec="colorList: red, original, blue, original, orange, original; interval: 5000" */
                /* attach-color-recursively="color: red" */
       />
       <a-plane id="nova2-plane"
@@ -152,32 +161,78 @@ function App() {
       >
         <a-plane id="sciurus-l-arm"
                  position="0.0 0.0 0.0" rotation="0 0 0"
-                 width="0.1" height="0.1" color="green"
+                 width="0.1" height="0.1" color="tan"
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17left"
-                 ik-worker={`0, ${-deg22}, ${deg45}, ${-deg45}, ${-deg90}, ${0}, ${0}, ${0}, ${-deg67}`}
+                 ik-worker={
+                   toSchema([0, -deg22, deg45, -deg45, -deg90, 0, deg67, 0])}
+                 joint-desirable={
+                   toSchema({gain: {1:21, 2:21, 6:21},
+			     upper: {1:-deg45, 2:deg67, 6:deg67},
+			     lower: {1:-deg45, 2:deg67, 6:deg67}})}
+                 joint-desirable-vlimit="all: 0.5"
                  joint-weight="override: 0:0.0064"
                  reflect-worker-joints
+                 reflect-collision="color: yellow"
+                 reflect-joint-limits
                  add-frame-to-joints="from: 0; to: 1"
-                 attach-event-broadcaster
                  arm-motion-ui
                  base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
-                 attach-opacity-recursively="opacity: 0.1"
+                 change-original-color-recursively="color: azure"
         >
+          <a-circle id="sciurus-lgripperA"
+                    radius="0.03" color="blue"
+                    robot-loader="model: sciurus17lgripperA"
+                    attach-to-another="to: sciurus-l-arm;event: a,b,x,y"
+                    finger-closer={toSchema({closeMax: 0, openMax: -45,
+                                             closeEvent: 'xbuttondown',
+                                             closeStopEvent: 'xbuttonup',
+                                             openEvent: 'ybuttondown',
+                                             openStopEvent: 'ybuttonup'})}
+          />
+          <a-circle id="sciurus-lgripperB"
+                    radius="0.03" color="blue"
+                    robot-loader="model: sciurus17lgripperB"
+                    attach-to-another="to: sciurus-l-arm;event: a,b,x,y"
+                    finger-closer={toSchema({closeMax: 0, openMax: -45,
+                                             closeEvent: 'xbuttondown',
+                                             closeStopEvent: 'xbuttonup',
+                                             openEvent: 'ybuttondown',
+                                             openStopEvent: 'ybuttonup'})}
+	  />
         </a-plane>
         <a-plane id="sciurus-r-arm"
-                 position="0.0 0.2 0.0" rotation="0 0 0"
-                 width="0.1" height="0.1" color="green"
+                 position="0.0 0.0 0.0" rotation="0 0 0"
+                 width="0.1" height="0.1" color="white"
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: sciurus17right"
                  attach-to-another="to: sciurus-l-arm; axis: 1"
-                 ik-worker={`${deg22}, ${-deg45}, ${deg45}, ${deg90}, ${0}, ${0}, ${0}, ${deg67}`}
-                 joint-desirable={`gain: 0:21,1:21; upper: 0:${deg22},1:${-deg22}; lower: 0:${deg22},1:${-deg22};`}
+                 ik-worker={
+                   toSchema([deg22, -deg45, deg45, deg90, 0, -deg67, 0])}
+                 joint-desirable={
+                   toSchema({gain: {0:21, 1:21, 5:21},
+                             upper: {0:deg45, 1:-deg67, 5:-deg67},
+			     lower: {0:deg45, 1:-deg67, 5:-deg67}})}
+                 joint-desirable-vlimit="all: 0.5"
                  reflect-worker-joints
-                 attach-event-broadcaster
+                 reflect-collision="color: yellow"
+                 reflect-joint-limits
                  arm-motion-ui
-                 attach-color-recursively="color: blue"
+                 change-original-color-recursively="color: azure"
         >
+          <a-circle id="sciurus-rgripperA"
+                    radius="0.03" color="blue"
+                    robot-loader="model: sciurus17rgripperA"
+                    attach-to-another="to: sciurus-r-arm;event: a,b,x,y"
+                    finger-closer="closeMax: 0;openMax: 45;debugTick: true"
+          />
+          <a-circle id="sciurus-rgripperB"
+                    radius="0.03" color="blue"
+                    robot-loader="model: sciurus17rgripperB"
+                    attach-to-another="to: sciurus-r-arm;event: a,b,x,y"
+                    finger-closer="closeMax: 0;openMax: 45;debugTick: true"
+          />
+
         </a-plane>
       </a-plane>
 
@@ -191,29 +246,33 @@ function App() {
                  width="0.1" height="0.1" color="green"
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: g1-right"
-                 ik-worker={`${0}, ${0}, ${0}, ${0}, ${0}, 0, 0`}
+                 ik-worker={`${0}, ${-deg22}, ${0}, ${0}, ${0}, 0, 0`}
+                 joint-move-to={`${0}, ${deg22}, ${0}, ${0}, ${0}, 0, 0`}
+                 exact_solution_slrm="exact: false"
+                 joint-desirable="gain: 0:20,1:20,3:40; upper: 0:0.382,1:-0.785,3:1.396; lower: 0:0.382,1:-0.785,3:0.0;"
+                 joint-desirable-vlimit="all: 2.0"
                  reflect-worker-joints
                  reflect-collision="color: yellow"
-                 attach-event-broadcaster
+                 reflect-joint-limits
                  arm-motion-ui
         >
           <a-circle id="g1rt-unitree-r-thumb"
                     robot-loader="model: g1-right-thumb"
-                    attach-to-another="to: g1r-unitree-r-arm"
+                    attach-to-another="to: g1r-unitree-r-arm;event: a,b,x,y"
                     finger-closer="stationaryJoints: 0; closeMax: -45"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
           />
           <a-circle id="g1ri-unitree-r-index"
                     robot-loader="model: g1-right-index"
-                    attach-to-another="to: g1r-unitree-r-arm"
+                    attach-to-another="to: g1r-unitree-r-arm;event: a,b,x,y"
                     finger-closer
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
           />
           <a-circle id="g1rm-unitree-r-middle"
                     robot-loader="model: g1-right-middle"
-                    attach-to-another="to: g1r-unitree-r-arm"
+                    attach-to-another="to: g1r-unitree-r-arm;event: a,b,x,y"
                     finger-closer
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
@@ -225,29 +284,32 @@ function App() {
                  material="opacity: 0.5; transparent: true; side: double;"
                  robot-loader="model: g1-left"
                  ik-worker={`${-deg22}, ${deg45}, ${0}, ${0}, ${0}, 0, 0`}
-                 joint-desirable="gain: 0:200,1:200; upper: 0:-0.382,1:0.785; lower: 0:-0.382,1:0.785;"
+                 joint-move-to={`${0}, ${-deg22}, ${0}, ${0}, ${0}, 0, 0`}
+                 exact_solution="exact: false"
+                 joint-desirable="gain: 0:20,1:20,3:40; upper: 0:-0.382,1:0.785,3:1.396; lower: 0:-0.382,1:0.785,3:0.0;"
+                 joint-desirable-vlimit="all: 2.0"
                  reflect-worker-joints
                  reflect-collision="color: yellow"
-                 attach-event-broadcaster
+                 reflect-joint-limits
                  arm-motion-ui
         >
           <a-circle id="g1lt-unitree-l-thumb"
                     robot-loader="model: g1-left-thumb"
-                    attach-to-another="to: g1l-unitree-l-arm"
+                    attach-to-another="to: g1l-unitree-l-arm;event: a,b,x,y"
                     finger-closer="stationaryJoints: 0; closeMax: 45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
           />
           <a-circle id="g1li-unitree-l-index"
                     robot-loader="model: g1-left-index"
-                    attach-to-another="to: g1l-unitree-l-arm"
+                    attach-to-another="to: g1l-unitree-l-arm;event: a,b,x,y"
                     finger-closer="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"
           />
           <a-circle id="g1lm-unitree-l-middle"
                     robot-loader="model: g1-left-middle"
-                    attach-to-another="to: g1l-unitree-l-arm"
+                    attach-to-another="to: g1l-unitree-l-arm;event: a,b,x,y"
                     finger-closer="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
                     radius="0.03" color="blue"
                     material="opacity: 0.5; transparent: true;"

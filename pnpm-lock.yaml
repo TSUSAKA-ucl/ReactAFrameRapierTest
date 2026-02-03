@@ -37,12 +37,9 @@ importers:
       '@ucl-nuee/robot-loader':
         specifier: workspace:*
         version: link:../robot-loader
-      '@ucl-nuee/sciurus17left':
-        specifier: workspace:*
-        version: link:../robot-assets/sciurus17left
-      '@ucl-nuee/sciurus17right':
-        specifier: workspace:*
-        version: link:../robot-assets/sciurus17right
+      '@ucl-nuee/sciurus17':
+        specifier: ^1.1.1
+        version: 1.1.1
       '@ucl-nuee/ur5e':
         specifier: workspace:*
         version: link:../robot-assets/ur5e
@@ -300,11 +297,14 @@ importers:
   Packages/sciurus17-nextjs-exmaple:
     dependencies:
       '@ucl-nuee/a0509':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.3
+        version: 1.0.3
       '@ucl-nuee/ik-cd-worker':
         specifier: workspace:*
         version: link:../ik-cd-worker
+      '@ucl-nuee/piper':
+        specifier: ^1.1.1
+        version: 1.1.1
       '@ucl-nuee/robot-loader':
         specifier: workspace:*
         version: link:../robot-loader
@@ -1469,8 +1469,8 @@ packages:
     resolution: {integrity: sha512-ink3/Zofus34nmBsPjow63FP5M7IGff0RKAgqR6+CFpdk22M7aLwC9gOcLGYqr7MczLPzZVERW9hRog3O4n1sQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@ucl-nuee/a0509@1.0.1':
-    resolution: {integrity: sha512-78mQ2zkJvw3hapfQO6HjYummgX5lZPWA7wnyrUrmAPFJdDMs43+fF+y3jE52nXcfHBTBxToKH1DR8kpOI1d/wg==, tarball: https://npm.pkg.github.com/download/@ucl-nuee/a0509/1.0.1/4f7ae6ad8f1e8ecb1b2be1cfde2413a72d0f5eb9}
+  '@ucl-nuee/a0509@1.0.3':
+    resolution: {integrity: sha512-SNLLA7gu4lyBYk57uAByJCph2FnS4fybIJjrUIkKe+L7QH4+idDyQGu4QpmM0jGRnzDECbayN50Iw/41tEufWA==, tarball: https://npm.pkg.github.com/download/@ucl-nuee/a0509/1.0.3/7c0115de8a15788930701516dbefd7fbedccbcc0}
 
   '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz':
     resolution: {tarball: https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz}
@@ -1489,6 +1489,9 @@ packages:
     resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-nova2-1.0.0.tgz}
     version: 1.0.0
     hasBin: true
+
+  '@ucl-nuee/piper@1.1.1':
+    resolution: {integrity: sha512-F81XpJq3oTNcYnRs9NMuoYucEDuvrvEuS9OQkVGfZay8tIf6BAlNHbfaLbbtZXBJ73hGHU9MqQkjQ50b3tfD+w==, tarball: https://npm.pkg.github.com/download/@ucl-nuee/piper/1.1.1/38ba45dff9f4a2c1e909fe3cf26c8417da495193}
 
   '@ucl-nuee/robot-loader@https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.4.tgz':
     resolution: {tarball: https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.4.tgz}
@@ -5123,7 +5126,7 @@ snapshots:
       '@typescript-eslint/types': 8.52.0
       eslint-visitor-keys: 4.2.1
 
-  '@ucl-nuee/a0509@1.0.1': {}
+  '@ucl-nuee/a0509@1.0.3': {}
 
   '@ucl-nuee/ik-cd-worker@https://github.com/TSUSAKA-ucl/ik-cd-worker/releases/download/ver.0.2.4/ucl-nuee-ik-cd-worker-0.2.4.tgz(@msgpack/msgpack@3.1.2)(aframe@1.7.1)':
     dependencies:
@@ -5133,6 +5136,8 @@ snapshots:
   '@ucl-nuee/jaka-zu5@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-jaka-zu5-1.0.0.tgz': {}
 
   '@ucl-nuee/nova2@https://github.com/TSUSAKA-ucl/robot-assets/releases/download/ver.0.0.1/ucl-nuee-nova2-1.0.0.tgz': {}
+
+  '@ucl-nuee/piper@1.1.1': {}
 
   '@ucl-nuee/robot-loader@https://github.com/TSUSAKA-ucl/robot-loader/releases/download/ver.1.0/ucl-nuee-robot-loader-1.0.4.tgz(@msgpack/msgpack@3.1.2)(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
@@ -5993,7 +5998,7 @@ snapshots:
       eslint: 9.39.2(jiti@2.6.1)
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-react: 7.37.5(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-react-hooks: 7.0.1(eslint@9.39.2(jiti@2.6.1))
@@ -6046,7 +6051,7 @@ snapshots:
       tinyglobby: 0.2.15
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -6086,7 +6091,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9

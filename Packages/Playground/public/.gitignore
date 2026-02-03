@@ -22,5 +22,9 @@ kinova-gen3/
 sciurus17left/
 sciurus17right/
 ur5e/
+sciurus17lgripperA/
+sciurus17lgripperB/
+sciurus17rgripperA/
+sciurus17rgripperB/
 !physicalObj.config.js
 !.gitignore
