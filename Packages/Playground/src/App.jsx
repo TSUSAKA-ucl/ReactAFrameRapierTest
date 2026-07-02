@@ -1,25 +1,27 @@
 // import React, { useEffect, useRef, useState } from 'react'
 import './App.css';
 import 'aframe';
-import '@ucl-nuee/robot-loader/robotRegistry.js';
 import VrControllerComponents from './VrControllerComponents.jsx';
 import ButtonUI from './ButtonUI.jsx';
 import './rapierHand1MotionUI.js';
 import './rapierRigidbodyAttach.js';
 import './rapierFuncController.js';
 import './rapierGripperSucker.js';
+import '@ucl-nuee/robot-loader/robotRegistry.js';
 import '@ucl-nuee/robot-loader/robotLoader.js';
 import '@ucl-nuee/robot-loader/ikWorker.js';
 import '@ucl-nuee/robot-loader/reflectWorkerJoints.js';
-import '@ucl-nuee/robot-loader/reflectCollision.js';
 import '@ucl-nuee/robot-loader/reflectJointLimits.js';
+import '@ucl-nuee/robot-loader/reflectCollision.js';
 import '@ucl-nuee/robot-loader/armMotionUI.js';
 import '@ucl-nuee/robot-loader/baseMover.js';
 import '@ucl-nuee/robot-loader/attachToAnother.js';
 import '@ucl-nuee/robot-loader/ChangeOpacity.js';
+import '@ucl-nuee/robot-loader/fingerCloser.js';
+import '@ucl-nuee/robot-loader/ignoreCollision.js';
+import '@ucl-nuee/ik-cd-worker/IkWorkerParamsComponents.js';
 import './jakaHandPoseRapier.js';
 import './addFrameToJoints.js';
-import '@ucl-nuee/robot-loader/fingerCloser.js';
 import './VerticalControls.js';
 import './ChangeColorEvery3sec.js';
 
@@ -48,6 +50,7 @@ function App() {
   return (
     <a-scene xr-mode-ui="XRMode: xr"
 	     keyboard-shortcuts="enterVR: false"
+             cd-worker-log-collision="logCollision: true"
     >
       <a-entity id="robot-registry"
                 robot-registry >
@@ -68,26 +71,6 @@ function App() {
         rapier-open-close-gripper
       />
 
-      <a-circle id="jaka-hand1-a"
-                robot-loader="model: jaka_hand_A"
-                /* set-joints-directly-in-degree="60, 30" */
-                attach-to-another="to: jaka-plane"
-
-                position="0.25 0.5 -2" rotation="-90 0 90"
-                radius="0.03"
-                color="blue"
-                material="opacity: 0.5; transparent: true;"
-      />
-      <a-circle id="jaka-hand1-b"
-                robot-loader="model: jaka_hand_B"
-                /* set-joints-directly-in-degree="60, 30" */
-                attach-to-another="to: jaka-plane"
-
-                position="0.25 0.5 -2" rotation="-90 0 90"
-                radius="0.03"
-                color="blue"
-                material="opacity: 0.5; transparent: true;"
-      />
       <a-plane id="jaka-plane"
                robot-loader="model: jaka_zu_5"
                position="0 0.0 -1.25" rotation="-90 0 90"
@@ -102,7 +85,28 @@ function App() {
                rapier-jaka-hand-width="rapeirHandL: jakaHandL; rapeirHandR: jakaHandR; aframeHandL: jaka-hand1-a; aframeHandR: jaka-hand1-b"
                /* change-color-every-3sec="colorList: red, original, blue, original, orange, original; interval: 5000" */
                /* attach-color-recursively="color: red" */
-      />
+        >
+        <a-circle id="jaka-hand1-a"
+                  robot-loader="model: jaka_hand_A"
+                  /* set-joints-directly-in-degree="60, 30" */
+                  attach-to-another="to: jaka-plane"
+
+                  position="0.25 0.5 -2" rotation="-90 0 90"
+                  radius="0.03"
+                  color="blue"
+                  material="opacity: 0.5; transparent: true;"
+        />
+        <a-circle id="jaka-hand1-b"
+                  robot-loader="model: jaka_hand_B"
+                  /* set-joints-directly-in-degree="60, 30" */
+                  attach-to-another="to: jaka-plane"
+
+                  position="0.25 0.5 -2" rotation="-90 0 90"
+                  radius="0.03"
+                  color="blue"
+                  material="opacity: 0.5; transparent: true;"
+        />
+      </a-plane>
       <a-plane id="nova2-plane"
                position="-1.0 0.0 -1.0" rotation="-90 0 90"
                width="0.02" height="0.02" color="beige"
@@ -121,27 +125,28 @@ function App() {
                rapier-func-controller
                rapier-fix-by-sucker="hand: nova2Sucker"
                base-mover
+               send-base-coord
       />
-      {/* <a-plane id="kinova-gen3" */}
-      {/*          position="-2.0 0.0 -2.0" rotation="-90 0 90" */}
-      {/*          width="0.02" height="0.02" color="blue" */}
-      {/*          material="opacity: 0.5; transparent: true; side: double;" */}
-      {/*          robot-loader="model: kinova-gen3" */}
-      {/*          ik-worker={`${0}, ${0}, ${0}, ${deg90}, ${0}, ${deg90}, 0`} */}
-      {/*          reflect-worker-joints */}
-      {/*          base-mover */}
-      {/*          arm-motion-ui */}
-      {/* /> */}
-      {/* <a-plane id="k3lit-kinova" */}
-      {/*          position="-2.0 0.0 0.0" rotation="-90 0 90" */}
-      {/*          width="0.04" height="0.04" color="blue" */}
-      {/*          material="opacity: 0.5; transparent: true; side: double;" */}
-      {/*          robot-loader="model: kinova-gen3-lite" */}
-      {/*          ik-worker={`${0}, ${0}, ${deg90}, ${0}, ${deg90}, 0`} */}
-      {/*          reflect-worker-joints */}
-      {/*          arm-motion-ui */}
-      {/*          base-mover="velocityMax: 0.2; angularVelocityMax: 0.5" */}
-      {/* /> */}
+      <a-plane id="kinova-gen3"
+               position="-2.0 0.0 -2.0" rotation="-90 0 90"
+               width="0.02" height="0.02" color="blue"
+               material="opacity: 0.5; transparent: true; side: double;"
+               robot-loader="model: kinova-gen3"
+               ik-worker={`${0}, ${0}, ${0}, ${deg90}, ${0}, ${deg90}, 0`}
+               reflect-worker-joints
+               base-mover
+               arm-motion-ui
+      />
+      <a-plane id="k3lit-kinova"
+               position="-2.0 0.0 0.0" rotation="-90 0 90"
+               width="0.04" height="0.04" color="blue"
+               material="opacity: 0.5; transparent: true; side: double;"
+               robot-loader="model: kinova-gen3-lite"
+               ik-worker={`${0}, ${0}, ${deg90}, ${0}, ${deg90}, 0`}
+               reflect-worker-joints
+               arm-motion-ui
+               base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
+      />
       <a-plane id="ur5e"
                position="-1.0 0.5 -0.0" rotation="-90 0 90"
                width="0.04" height="0.04" color="blue"
@@ -153,6 +158,7 @@ function App() {
                reflect-collision="color: orange"
                arm-motion-ui
                base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
+               send-base-coord
       />
     
       <a-plane id="sciurus17"
@@ -237,10 +243,10 @@ function App() {
       </a-plane>
 
 
-      <a-plane id="unitree-g1-torso"
+      <a-box id="unitree-g1-torso"
                position="1.0 0.2 -0.5" rotation="-90 0 110"
                base-mover="velocityMax: 0.2; angularVelocityMax: 0.5"
-               width="0.4" height="0.4" color="red"
+               width="0.4" height="0.4" depth="0.1" color="red"
       >
         <a-plane id="g1r-unitree-r-arm"
                  width="0.1" height="0.1" color="green"
@@ -251,33 +257,38 @@ function App() {
                  exact_solution_slrm="exact: false"
                  joint-desirable="gain: 0:20,1:20,3:40; upper: 0:0.382,1:-0.785,3:1.396; lower: 0:0.382,1:-0.785,3:0.0;"
                  joint-desirable-vlimit="all: 2.0"
-                 reflect-worker-joints
                  reflect-collision="color: yellow"
                  reflect-joint-limits
                  arm-motion-ui
+                 send-base-coord
         >
           <a-circle id="g1rt-unitree-r-thumb"
                     robot-loader="model: g1-right-thumb"
                     attach-to-another="to: g1r-unitree-r-arm;event: a,b,x,y"
-                    finger-closer="stationaryJoints: 0; closeMax: -45"
-                    radius="0.03" color="blue"
-                    material="opacity: 0.5; transparent: true;"
+                    ik-worker="0, 0, 0"
+                    finger-closer2="stationaryJoints: 0; closeMax: -45"
+                    radius="0.003" color="blue"
+                    ignore-collision="other:g1r-unitree-r-arm; data: 0/7, 0/8, 1/7, 1/8"
+                    reflect-collision="color: yellow"
           />
           <a-circle id="g1ri-unitree-r-index"
                     robot-loader="model: g1-right-index"
                     attach-to-another="to: g1r-unitree-r-arm;event: a,b,x,y"
-                    finger-closer
-                    radius="0.03" color="blue"
-                    material="opacity: 0.5; transparent: true;"
+                    ik-worker="0, 0"
+                    finger-closer2
+                    radius="0.003" color="gray"
+                    ignore-collision="other:g1r-unitree-r-arm; data: 0/7, 0/8, 1/7, 1/8"
+                    reflect-collision="color: yellow"
           />
           <a-circle id="g1rm-unitree-r-middle"
                     robot-loader="model: g1-right-middle"
                     attach-to-another="to: g1r-unitree-r-arm;event: a,b,x,y"
-                    finger-closer
-                    radius="0.03" color="blue"
-                    material="opacity: 0.5; transparent: true;"
-          />
-        </a-plane>
+                    ik-worker="0, 0"
+                    finger-closer2
+                    radius="0.003" color="gray"
+                    ignore-collision="other:g1r-unitree-r-arm; data: 0/7, 0/8, 1/7, 1/8"
+                    reflect-collision="color: yellow"
+         />
 
         <a-plane id="g1l-unitree-l-arm"
                  width="0.1" height="0.1" color="green"
@@ -288,34 +299,42 @@ function App() {
                  exact_solution="exact: false"
                  joint-desirable="gain: 0:20,1:20,3:40; upper: 0:-0.382,1:0.785,3:1.396; lower: 0:-0.382,1:0.785,3:0.0;"
                  joint-desirable-vlimit="all: 2.0"
-                 reflect-worker-joints
+                 ignore-collision="other:g1r-unitree-r-arm; data: 0/1, 0/0, 1/0"
                  reflect-collision="color: yellow"
                  reflect-joint-limits
                  arm-motion-ui
+                 send-base-coord
         >
           <a-circle id="g1lt-unitree-l-thumb"
                     robot-loader="model: g1-left-thumb"
                     attach-to-another="to: g1l-unitree-l-arm;event: a,b,x,y"
-                    finger-closer="stationaryJoints: 0; closeMax: 45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
-                    radius="0.03" color="blue"
-                    material="opacity: 0.5; transparent: true;"
+                    ik-worker="0, 0, 0"
+                    finger-closer2="stationaryJoints: 0; closeMax: 45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
+                    radius="0.003" color="gray"
+                    ignore-collision="other:g1l-unitree-l-arm; data: 0/7, 0/8, 1/7, 1/8"
+                    reflect-collision="color: yellow"
           />
           <a-circle id="g1li-unitree-l-index"
                     robot-loader="model: g1-left-index"
                     attach-to-another="to: g1l-unitree-l-arm;event: a,b,x,y"
-                    finger-closer="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
-                    radius="0.03" color="blue"
-                    material="opacity: 0.5; transparent: true;"
+                    ik-worker="0, 0"
+                    finger-closer2="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
+                    radius="0.003" color="gray"
+                    ignore-collision="other:g1l-unitree-l-arm; data: 0/7, 0/8, 1/7, 1/8"
+                    reflect-collision="color: yellow"
           />
           <a-circle id="g1lm-unitree-l-middle"
                     robot-loader="model: g1-left-middle"
                     attach-to-another="to: g1l-unitree-l-arm;event: a,b,x,y"
-                    finger-closer="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
-                    radius="0.03" color="blue"
-                    material="opacity: 0.5; transparent: true;"
+                    ik-worker="0, 0"
+                    finger-closer2="closeMax: -45; closeEvent: xbuttondown; closeStopEvent: xbuttonup; openEvent: ybuttondown; openStopEvent: ybuttonup"
+                    radius="0.003" color="gray"
+                    ignore-collision="other:g1l-unitree-l-arm; data: 0/7, 0/8, 1/7, 1/8"
+                    reflect-collision="color: yellow"
           />
         </a-plane>
-      </a-plane>
+        </a-plane>
+      </a-box>
 
       {/* <a-sky color="#ECECEC"></a-sky> */}
     </a-scene>

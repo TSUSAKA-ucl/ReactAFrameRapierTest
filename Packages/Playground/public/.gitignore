@@ -1,6 +1,8 @@
 rapier-worker.mjs
 rapierObjectUtils.js
 ik_cd_worker.js
+ik-worker.js
+cd-worker.js
 wasm/cd_module.js
 wasm/cd_module.wasm
 wasm/slrm_module.js
@@ -10,10 +12,12 @@ nova2_robot/
 g1-left-index/
 g1-left-middle/
 g1-left-thumb/
+g1-left-thumb.ORIG/
 g1-left/
 g1-right-index/
 g1-right-middle/
 g1-right-thumb/
+g1-right-thumb.ORIG/
 g1-right/
 jaka_hand_A/
 jaka_hand_B/

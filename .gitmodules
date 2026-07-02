@@ -18,3 +18,10 @@
 	path = Packages/unitree-g1-nextjs-exmaple
 	url = https://github.com/TSUSAKA-ucl/unitree-g1-nextjs-exmaple.git
 	branch = workspace
+[submodule "Packages/ik-cd-worker-minimum-test"]
+	path = Packages/ik-cd-worker-minimum-test
+	url = https://github.com/TSUSAKA-ucl/ik-cd-worker-minimum-test.git
+[submodule "Packages/piper-dual-test"]
+	path = Packages/piper-dual-test
+	url = https://github.com/TSUSAKA-ucl/ik-cd-worker-minimum-test.git
+	branch = piper
